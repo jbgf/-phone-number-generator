@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { createEmoji } from "./action"
 import { SubmitButton } from "./submit-button"
-// @ts-expect-error
-import { experimental_useFormState as useFormState } from "react-dom"
+
+// import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
 
@@ -13,7 +13,7 @@ interface EmojiFormProps {
 }
 
 export function EmojiForm({ initialPrompt }: EmojiFormProps) {
-  const [formState, formAction] = useFormState(createEmoji)
+  // const [formState, formAction] = useFormState(createEmoji)
   const submitRef = useRef<React.ElementRef<"button">>(null)
   const [token, setToken] = useState("")
 
@@ -35,7 +35,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
   ) */
 
   return (
-    <form action={formAction} className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
+    <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
       <input
         defaultValue={initialPrompt}
         type="text"
