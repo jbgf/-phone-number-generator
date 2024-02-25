@@ -20,7 +20,17 @@ body {
   color: rgb(var(--foreground-rgb));
   
 }
+.ant-select-show-search {
+  color: white;
+}
+.ant-select-single {
+  height: auto;
+}
+.ant-select-selection-item {
+        
+  color: white;
 
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
