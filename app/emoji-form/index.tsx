@@ -1,23 +1,37 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { createEmoji } from "./action"
 import { SubmitButton } from "./submit-button"
 import { ConfigProvider, Flex, Input, Select, Space } from "antd"
 import styles from './styles.module.css'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
+import { Faker, en } from '@faker-js/faker'
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
-
+const locales = [{locale: en, label: '+1'}]
+export const customFakers = locales.map(item => new Faker({
+  locale: [item.locale],
+}));
 interface EmojiFormProps {
   initialPrompt?: string
 }
 
 export function EmojiForm({ initialPrompt }: EmojiFormProps) {
+  const [label, setLabel] = useState<string>(locales[0]?.label)
+  const [phoneDisplay, setPhoneDisplay] = useState('')
   // const [formState, formAction] = useFormState(createEmoji)
-  const submitRef = useRef<React.ElementRef<"button">>(null)
-  const [token, setToken] = useState("")
+  const currentLocale = useMemo(() =>  {
+    const item = locales?.filter(item => item.label === label)?.[0]
+    return new Faker({
+      locale: [item.locale],
+    })
+  }, [label])
+  const generatePhoneNumber = () => {
+    const phone = currentLocale.phone.number('###-###-####')
+    setPhoneDisplay(phone)
+  }
 
   /* useEffect(() => {
     if (!formState) return
@@ -65,9 +79,10 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
             submitRef.current?.click()
           }
         }} */
+        value={phoneDisplay}
         readOnly
         suffix={<Space>
-          <EnterOutlined className="cursor-pointer"/>
+          <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer"/>
           </Space>}
         placeholder="cat"
         className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
