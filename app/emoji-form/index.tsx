@@ -107,7 +107,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
       <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
       </ConfigProvider> */}
       <Input
-        prefix={<US title="United States" className="size-5" />}
+        prefix={<US title="United States" className="size-5  mr-2" />}
         // defaultValue={initialPrompt}
         type="text"
         name="prompt"
@@ -125,7 +125,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
           </Space>}
         placeholder="cat"
         className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
-        py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300"
+        py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white " 
         // ref={submitRef} 
         
         />
