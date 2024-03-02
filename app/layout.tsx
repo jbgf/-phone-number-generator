@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -18,8 +19,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDev = process.env.NODE_ENV === "development"
+  const Wrapper = isDev ? Inspector : React.Fragment;
+  // console.log(process.env.NODE_ENV, `process.env.env`)
   return (
     <html lang="en">
+      <Wrapper>
       <body className={cn(inter.className, "antialiased bg-gray-100")}>
         <header
           className={cn(
@@ -67,6 +72,7 @@ export default function RootLayout({
         </main>
         {/* <Providers /> */}
       </body>
+      </Wrapper>
     </html>
   );
 }
