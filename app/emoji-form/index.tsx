@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { createEmoji } from "./action"
 import { SubmitButton } from "./submit-button"
 import { ConfigProvider, Flex, Input, Select, Space } from "antd"
-import styles from './styles.module.css'
+import { US } from 'country-flag-icons/react/3x2'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, en } from '@faker-js/faker'
 // import { experimental_useFormState as useFormState } from "react-dom"
@@ -94,22 +94,20 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
   return (
     <Flex gap="small">
     <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
-      <Space.Compact style={{width: '100%'}}>
-      <ConfigProvider
+      {/* <Space.Compact style={{width: '100%'}}> */}
+     {/*  <ConfigProvider
   theme={{
     components: {
       Select: {
-        /* 这里是你的组件 token */
         'selectorBg': 'transparent',
-        // 'optionHeight': 
-        // 'optionSelectedColor': '#fff'
       },
     },
   }}
 >
       <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
-      </ConfigProvider>
+      </ConfigProvider> */}
       <Input
+        prefix={<US title="United States" className="size-5" />}
         // defaultValue={initialPrompt}
         type="text"
         name="prompt"
@@ -123,7 +121,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
         value={phoneDisplay}
         readOnly
         suffix={<Space>
-          <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer"/>
+          <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5"/>
           </Space>}
         placeholder="cat"
         className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
@@ -132,7 +130,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
         
         />
         
-      </Space.Compact>
+      {/* </Space.Compact> */}
       {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
     </form>
       <CopyOutlined onClick={() => copy(phoneDisplay)} className="cursor-pointer text-2xl text-gray-400 hover:text-gray-500 active:text-gray-900 transition-all" />

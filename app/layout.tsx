@@ -6,6 +6,7 @@ import { Inspector } from 'react-dev-inspector'
 import cn from 'classnames'
 import Link from "next/link";
 import Image from "next/image";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 const inter = Inter({ subsets: ["latin"] });
 const BODY_PADDING = "px-4 sm:px-6"
 
@@ -68,7 +69,7 @@ export default function RootLayout({
           </div>
         </header>
         <main className={cn("min-h-screen flex items-stretch flex-col pb-28 max-w-5xl mx-auto", BODY_PADDING)}>
-          {children}
+          <AntdRegistry>{children}</AntdRegistry>
         </main>
         {/* <Providers /> */}
       </body>
