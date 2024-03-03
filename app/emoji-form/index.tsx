@@ -133,7 +133,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
       {/* </Space.Compact> */}
       {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
     </form>
-      <CopyOutlined onClick={() => copy(phoneDisplay)} className="cursor-pointer text-2xl text-gray-400 hover:text-gray-500 active:text-gray-900 transition-all" />
+      <CopyOutlined onClick={() => copy(phoneDisplay)} className="cursor-pointer text-2xl !text-gray-400 hover:!text-gray-500 active:!text-gray-900 transition-all" />
       </Flex>
   )
 }
