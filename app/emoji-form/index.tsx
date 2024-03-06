@@ -7,33 +7,34 @@ import { ConfigProvider, Flex, Input, Select, Space } from "antd"
 import { US } from 'country-flag-icons/react/3x2'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, en } from '@faker-js/faker'
+import { CountryLabels, locales } from "../const"
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
-const locales = [{locale: en, label: 'en'}]
-const options = locales?.map(item => ({'label': item.label, value: item?.label}))
 export const customFakers = locales.map(item => new Faker({
   locale: [item.locale],
 }));
 interface EmojiFormProps {
-  initialPrompt?: string
+  country?: CountryLabels
 }
 
-export function EmojiForm({ initialPrompt }: EmojiFormProps) {
-  const [label, setLabel] = useState<string>(locales[0]?.label)
+export function EmojiForm({ country }: EmojiFormProps) {
   const [phoneDisplay, setPhoneDisplay] = useState('')
+  const config = useMemo(() => {
+    const item = locales?.filter(item => item.label === country)?.[0] || locales[0]
+    return item;
+  }, [country])
   // const [formState, formAction] = useFormState(createEmoji)
   const currentLocale = useMemo(() =>  {
-    const item = locales?.filter(item => item.label === label)?.[0]
     return new Faker({
-      locale: [item.locale],
+      locale: [config.locale],
     })
-  }, [label])
+  }, [config])
   useEffect(() => { 
     generatePhoneNumber()
-   }, [label])
+   }, [country])
   const generatePhoneNumber = () => {
-    const phone = currentLocale.phone.number('###-###-####')
+    const phone = currentLocale.phone.number()
     setPhoneDisplay(phone)
   }
   const copy = (text: string) => {
@@ -90,7 +91,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
       onSuccess: (token) => setToken(token),
     }
   ) */
-
+  const ICON = config?.icon;
   return (
     <Flex gap="small">
     <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
@@ -107,7 +108,7 @@ export function EmojiForm({ initialPrompt }: EmojiFormProps) {
       <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
       </ConfigProvider> */}
       <Input
-        prefix={<US title="United States" className="size-5  mr-2" />}
+        prefix={<ICON title={config?.localeName} className="size-5  mr-2" />}
         // defaultValue={initialPrompt}
         type="text"
         name="prompt"

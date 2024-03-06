@@ -1,13 +1,15 @@
 
+import Link from "next/link"
+import { CountryLabels, locales } from "../const"
 import { EmojiCount } from "../emoji-count"
 import { EmojiForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
 
 interface PageContentProps extends React.PropsWithChildren {
-  prompt?: string
+  country: CountryLabels
 }
 
-export const PageContent = ({ children, prompt }: PageContentProps) => {
+export const PageContent = ({ children, country }: PageContentProps) => {
   return (
     <>
       <div className="py-[15vh] sm:py-[20vh] flex flex-col items-center justify-center">
@@ -19,8 +21,14 @@ export const PageContent = ({ children, prompt }: PageContentProps) => {
         </h2>
 
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-          <EmojiForm initialPrompt={prompt} />
+          <EmojiForm country={country} />
         </div>
+        <section className="grid grid-cols-2 md:grid-cols-3 gap-4 place-items-center pt-10">
+          {locales?.filter(item => item.label !== country).map(item => {
+            return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
+            } title={item.localeName}>{item.localeName}</Link>
+          })}
+        </section>
         <div className="pt-36"><UserGuide /></div>
       </div>
 
