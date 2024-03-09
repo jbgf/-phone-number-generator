@@ -8,6 +8,7 @@ import { US } from 'country-flag-icons/react/3x2'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, en } from '@faker-js/faker'
 import { CountryLabels, locales } from "../const"
+import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
@@ -134,7 +135,11 @@ export function EmojiForm({ country }: EmojiFormProps) {
       {/* </Space.Compact> */}
       {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
     </form>
-      <CopyOutlined onClick={() => copy(phoneDisplay)} className="cursor-pointer text-2xl !text-gray-400 hover:!text-gray-500 active:!text-gray-900 transition-all" />
+      <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
+        <CopyOutlined onClick={() => copy(phoneDisplay)} 
+          className="cursor-pointer text-2xl !text-gray-400 hover:!text-gray-500 active:!text-gray-900 transition-all" />
+      </ToolTipWrapper>
+      
       </Flex>
   )
 }
