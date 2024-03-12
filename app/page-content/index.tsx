@@ -23,7 +23,7 @@ export const PageContent = ({ children, country }: PageContentProps) => {
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
           <EmojiForm country={country} />
         </div>
-        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 place-items-center pt-10">
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 place-items-center pt-10">
           {locales?.filter(item => item.label !== country).map(item => {
             return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
             } title={`${item.localeName}-phone generator`}>{item.localeName}</Link>

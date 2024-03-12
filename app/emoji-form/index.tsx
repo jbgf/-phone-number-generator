@@ -6,15 +6,13 @@ import { SubmitButton } from "./submit-button"
 import { ConfigProvider, Flex, Input, Select, Space } from "antd"
 import { US } from 'country-flag-icons/react/3x2'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
-import { Faker, en } from '@faker-js/faker'
+import { Faker, allFakers } from '@faker-js/faker'
 import { CountryLabels, locales } from "../const"
 import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
-export const customFakers = locales.map(item => new Faker({
-  locale: [item.locale],
-}));
+
 interface EmojiFormProps {
   country?: CountryLabels
 }
@@ -27,15 +25,15 @@ export function EmojiForm({ country }: EmojiFormProps) {
   }, [country])
   // const [formState, formAction] = useFormState(createEmoji)
   const currentLocale = useMemo(() =>  {
-    return new Faker({
-      locale: [config.locale],
-    })
+    console.log(`local`, config.locale)
+    const FakerFN = allFakers[config.locale]
+    return FakerFN
   }, [config])
   useEffect(() => { 
     generatePhoneNumber()
    }, [country])
   const generatePhoneNumber = () => {
-    const phone = currentLocale.phone.number()
+    const phone = currentLocale.phone?.number()
     setPhoneDisplay(phone)
   }
   const copy = (text: string) => {
