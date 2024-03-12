@@ -1,19 +1,27 @@
-import { Faker, es, fr, en, en_GB, en_HK } from '@faker-js/faker'
-import { US, GB, ES, FR, HK } from 'country-flag-icons/react/3x2'
+import { Faker, es, fr, en_US, en_GB, en_HK, en_GH } from '@faker-js/faker'
+import { US, GB, ES, FR, HK, GH } from 'country-flag-icons/react/3x2'
 
 export enum CountryLabels {
   Usa = 'usa',
   Uk = 'great_britain',
   Fr = 'french',
   Es = 'spain',
-  Hk = 'hk'
+  Hk = 'hk',
+  Ghana = 'ghana'
 }
 export const locales = [
     {
-        locale: en, 
+        locale: en_US, 
         label: CountryLabels.Usa,
         icon: US,
         localeName: 'USA'
+
+    },
+    {
+        locale: en_GH, 
+        label: CountryLabels.Ghana,
+        icon: GH,
+        localeName: 'Ghana'
 
     }, {
         locale: en_HK,

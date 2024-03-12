@@ -11,8 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 const BODY_PADDING = "px-4 sm:px-6"
 
 export const metadata: Metadata = {
-  title: "Instant Phone Number Generator - Free & Easy to Use",
-  description: "Need a phone number for testing? Generate valid, customizable phone numbers in seconds with our easy-to-use online tool. No sign-up required.",
+  title: "Versatile Phone Number Test Generator",
+  description: "Effortlessly generate phone numbers for testing purposes across multiple countries and regions with our versatile tool.",
 };
 
 export default function RootLayout({
