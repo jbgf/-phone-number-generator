@@ -15,23 +15,21 @@ export async function generateStaticParams() {
     country: item.label,
   }))
 }
-/* export async function generateMetadata(
+
+export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   
-  // read route params
-  const duration = params.country || `5`
- 
+  const label = params.country || locales?.[0]?.label
+  const localeName = locales?.filter(locale => locale?.label === label)?.[0]?.localeName
   return {
-    title: `${duration} Minute Timer - Boost Your Productivity`,
-    description: `Discover efficient ways to use a ${duration} minute timer for boosting productivity 
-    and focus. From Pomodoro techniques to quick breaks and meditation, 
-    learn how to incorporate short intervals into your daily routine for improved efficiency.`,
+    title: `${localeName} Phone Number Generator | Quick & Reliable for Testing`,
+    description: `Effortlessly generate phone numbers for testing purposes in 
+    ${localeName} with our versatile tool. Access a wide range of numbers for comprehensive testing`,
 
   }
-} */
-
+}
 export default function CountryPage({params}: {params: {country: CountryLabels}}) {
   console.log(params, `.....params....`)
   return (

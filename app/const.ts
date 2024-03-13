@@ -12,9 +12,12 @@ export enum CountryLabels {
   Canada = 'Canada'
 }
 export const locales: {
+
     locale: keyof typeof allFakers;
+    /** url path */
     label: CountryLabels;
     icon: FlagComponent;
+    /** country and area name */
     localeName: string;
 }[] = [
     {
