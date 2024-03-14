@@ -13,6 +13,14 @@ const BODY_PADDING = "px-4 sm:px-6"
 export const metadata: Metadata = {
   title: "Versatile Phone Number Test Generator",
   description: "Effortlessly generate phone numbers for testing purposes across multiple countries and regions with our versatile tool.",
+  icons: [
+    {rel: "icon", url: "/favicon.ico" }/* ,
+    {rel: "icon", url: "/favicon-32x32.png" },
+    { 
+      rel: "apple-touch-icon", 
+      url: "/apple-touch-icon.png" 
+    } */
+  ]
 };
 
 export default function RootLayout({
