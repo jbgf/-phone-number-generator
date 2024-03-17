@@ -1,7 +1,7 @@
-import { Faker, es, fr, en_US, en_GB, en_HK, en_CA, en_GH, LocaleDefinition } from '@faker-js/faker'
-import { US, GB, ES, FR, HK, GH, CA, FlagComponent } from 'country-flag-icons/react/3x2'
-import type { allFakers } from '@faker-js/faker'
 
+import { US, GB, ES, FR, HK, GH, CA, RU, DE, FlagComponent } from 'country-flag-icons/react/3x2'
+import type { allFakers } from '@faker-js/faker'
+/** shown in url */
 export enum CountryLabels {
   Usa = 'USA',
   Uk = 'Great_Britain',
@@ -9,10 +9,12 @@ export enum CountryLabels {
   Es = 'Spain',
   Hk = 'HK',
   Ghana = 'Ghana',
-  Canada = 'Canada'
+  Canada = 'Canada',
+  Russia = 'Russia',
+  German = 'German'
 }
 export const locales: {
-
+    /** faker locale */
     locale: keyof typeof allFakers;
     /** url path */
     label: CountryLabels;
@@ -45,6 +47,16 @@ export const locales: {
         label: CountryLabels.Hk,
         icon: HK,
         localeName: 'Hongkong'
+    },{
+        locale: 'de',
+        label: CountryLabels.German,
+        icon: DE,
+        localeName: 'German'
+    },{
+        locale: 'ru',
+        label: CountryLabels.Russia,
+        icon: RU,
+        localeName: 'Russia'
     },{
         locale: 'en_GB',
         label: CountryLabels.Uk,

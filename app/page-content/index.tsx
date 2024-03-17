@@ -13,12 +13,13 @@ export const PageContent = ({ children, country }: PageContentProps) => {
   return (
     <>
       <div className="py-[15vh] sm:py-[20vh] flex flex-col items-center justify-center">
-        <h1 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
-          phone number generator
-        </h1>
-        <h2 className="text-gray-500 mb-12 text-base animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-          generate fake phone number for test
+        <h2 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
+          Generate a Phone Number for {country} with Just a Click!
         </h2>
+        
+        <h3 className="text-gray-500 mb-12 text-base animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
+           Easily Generate Fake and Random Phone Numbers for Testing Purposes
+        </h3>
 
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
           <EmojiForm country={country} />
