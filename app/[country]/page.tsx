@@ -8,7 +8,7 @@ type Props = {
   params: { country: CountryLabels }
   searchParams: { [key: string]: string | string[] | undefined }
 }
-export const dynamicParams = false
+// export const dynamicParams = false
 export async function generateStaticParams() {
  
   return locales.map((item) => ({
