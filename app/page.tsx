@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { PageContent } from "./page-content";
-import CountryPage from "./[country]/page";
 import { CountryLabels } from "./const";
+import { PageContent } from "./page-content";
 
 export default function Home() {
   return (
-    <CountryPage params={{'country': CountryLabels.Usa}} />
+    <PageContent isHome country={CountryLabels.Usa} />
   );
 }

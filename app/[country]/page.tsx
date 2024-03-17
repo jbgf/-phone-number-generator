@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { useEffect } from "react";
+
 import { Metadata, ResolvingMetadata } from 'next'
 
 import { PageContent } from "../page-content";
@@ -32,8 +31,8 @@ export async function generateMetadata(
   }
 }
 export default function CountryPage({params}: {params: {country: CountryLabels}}) {
-  console.log(params, `.....params....`)
+  console.log(`CountryPage.....params....`, params, )
   return (
-    <PageContent country={params?.country} />
+    <PageContent country={params?.country}  />
   );
 }

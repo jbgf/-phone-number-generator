@@ -75,3 +75,7 @@ export const locales: {
             localeName: 'Spain'
         
     }]
+
+export enum BrandTitles_Output {
+    Home = `Versatile Phone Number`
+}
