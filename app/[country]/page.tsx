@@ -22,7 +22,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   
   const label = params.country || locales?.[0]?.label
-  const localeName = locales?.filter(locale => locale?.label === label)?.[0]?.localeName
+  // google search old link with lowercase, eg: hk
+  const localeName = locales?.filter(locale => locale?.label?.toLocaleLowerCase?.() === label?.toLocaleLowerCase?.())?.[0]?.localeName
   return {
     title: `${localeName} Phone Number Generator | Quick & Reliable for Testing`,
     description: `Effortlessly generate phone numbers for testing purposes in 
