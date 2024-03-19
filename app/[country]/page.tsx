@@ -24,8 +24,8 @@ export async function generateMetadata(
   // google search old link with lowercase, eg: hk
   const localeName = locales?.filter(locale => locale?.label?.toLocaleLowerCase?.() === label?.toLocaleLowerCase?.())?.[0]?.localeName
   return {
-    title: `${localeName} Phone Number Generator | Quick & Reliable for Testing`,
-    description: `Effortlessly generate phone numbers for testing purposes in 
+    title: `Random ${localeName} Phone Number Generator`,
+    description: `Effortlessly generate random phone numbers in 
     ${localeName} with our versatile tool. Access a wide range of numbers for comprehensive testing`,
 
   }
