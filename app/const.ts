@@ -3,15 +3,15 @@ import { US, GB, ES, FR, HK, GH, CA, RU, DE, FlagComponent } from 'country-flag-
 import type { allFakers } from '@faker-js/faker'
 /** shown in url */
 export enum CountryLabels {
-  Usa = 'USA',
-  Uk = 'Great_Britain',
-  Fr = 'French',
-  Es = 'Spain',
-  Hk = 'HK',
-  Ghana = 'Ghana',
-  Canada = 'Canada',
-  Russia = 'Russia',
-  German = 'German'
+  Usa = 'USA_phonenumber',
+  Uk = 'Great_Britain_phonenumber',
+  Fr = 'French_phonenumber',
+  Es = 'Spain_phonenumber',
+  Hk = 'HK_phonenumber',
+  Ghana = 'Ghana_phonenumber',
+  Canada = 'Canada_phonenumber',
+  Russia = 'Russia_phonenumber',
+  German = 'German_phonenumber'
 }
 export const locales: {
     /** faker locale */
