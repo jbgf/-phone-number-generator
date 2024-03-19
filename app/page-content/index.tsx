@@ -16,7 +16,7 @@ export const PageContent = (props: PageContentProps) => {
     <>
       <div className="py-[15vh] sm:py-[20vh] flex flex-col items-center justify-center">
         <h2 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
-          Generate a Phone Number{props.isHome ? `` : ` for ${country}`} with Just a Click!
+          Generate a Phone Number{props.isHome ? `` : ` for ${country?.replace('_phonenumber', '')}`} with Just a Click!
         </h2>
         
         <h3 className="text-gray-500 mb-12 text-base animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
