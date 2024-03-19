@@ -5,7 +5,6 @@ const generate = (url: string, num?: string): MetadataRoute.Sitemap[number] => {
     'url': url + (num === undefined ? '' : `/${num}`),
     lastModified: new Date(),
     changeFrequency: 'daily',
-    priority: 0.8,
   }
 }
 export default function sitemap(): MetadataRoute.Sitemap {
