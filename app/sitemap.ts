@@ -8,7 +8,7 @@ const generate = (url: string, num?: string): MetadataRoute.Sitemap[number] => {
   }
 }
 export default function sitemap(): MetadataRoute.Sitemap {
-  const toGenerate = locales?.slice(0, 9)
+  const toGenerate = locales/* ?.slice(0, 9) */
   const basePath = `https://www.phonenumbergenerator.app`;
   const arr: MetadataRoute.Sitemap = [generate(basePath)].concat(toGenerate?.map(item => {
     return generate(basePath, item.label)

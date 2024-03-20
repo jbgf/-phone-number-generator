@@ -30,7 +30,7 @@ export const PageContent = (props: PageContentProps) => {
         <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 place-items-center pt-10">
           {locales?.filter(item => item.label !== country).map(item => {
             return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
-            } title={`${item.localeName}-phone generator`}>{item.localeName}</Link>
+            } title={`${item.localeName} phone number generator`}>{item.localeName}</Link>
           })}
         </section>
         <div className="pt-36"><UserGuide isHome={props.isHome} /></div>

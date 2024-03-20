@@ -1,5 +1,5 @@
 
-import { US, GB, ES, FR, HK, GH, CA, RU, DE, CN, FlagComponent } from 'country-flag-icons/react/3x2'
+import { US, GB, ES, FR, HK, GH, CA, RU, DE, CN, FlagComponent, IN } from 'country-flag-icons/react/3x2'
 import type { allFakers } from '@faker-js/faker'
 /** shown in url */
 export enum CountryLabels {
@@ -12,7 +12,8 @@ export enum CountryLabels {
   Canada = 'Canada_phonenumber',
   Russia = 'Russia_phonenumber',
   German = 'German_phonenumber',
-  China = 'China_phonenumber'
+  China = 'China_phonenumber',
+  India = 'India_phonenumber'
 }
 export const locales: {
     /** faker locale */
@@ -53,6 +54,11 @@ export const locales: {
         label: CountryLabels.China,
         icon: CN,
         localeName: 'China'
+    },{
+        locale: 'en_IN',
+        label: CountryLabels.India,
+        icon: IN,
+        localeName: 'India'
     },{
         locale: 'de',
         label: CountryLabels.German,
