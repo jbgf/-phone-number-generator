@@ -7,6 +7,7 @@ import cn from 'classnames'
 import Link from "next/link";
 import Image from "next/image";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
 const inter = Inter({ subsets: ["latin"] });
 const BODY_PADDING = "px-4 sm:px-6"
@@ -83,6 +84,7 @@ export default function RootLayout({
         {/* <Providers /> */}
       </body>
       </Wrapper>
+      <GoogleAnalytics gaId="G-FL3XTQJHV4" />
     </html>
   );
 }
