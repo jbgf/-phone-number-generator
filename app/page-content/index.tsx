@@ -34,8 +34,27 @@ export const PageContent = (props: PageContentProps) => {
             } title={`${item.localeName} phone number generator`}>{item.localeName}</Link>
           })}
         </section>
-        <div className="pt-12">
-        <Image
+        <div className="pt-24">
+          <h1 className="text-3xl pb-8 text-center font-bold" >How a Fake Phone Number Generator Can Help You</h1>
+          <ol className="list-decimal list-inside pb-8">
+            {[
+              {title: `Ease of Testing`, text: `Automate and simplify the testing process for developers and QA engineers by generating phone numbers directly within TestComplete or other testing environments, reducing manual input and errors`},
+              {title:`Enhanced Privacy Protection`, text: `Safeguard personal privacy by using generated phone numbers for registrations, avoiding the need to disclose personal numbers on potentially insecure or spam-prone platforms`},
+              {title: `Global Reach`, text: `Generate phone numbers from a wide range of countries, supporting international testing and user registration scenarios without geographical limitations`},
+              // {Efficiency in Bulk Generation: Quickly produce a large volume of phone numbers to test the capacity and performance of SMS services, databases, or customer relationship management (CRM) systems.
+              // {title: `Improved UX/UI Testing`, text: `Use generated phone numbers to test and ensure that your application's user interface accommodates various phone number formats properly`},
+              {title: `Customization Options`, text: `Tailor the generated phone numbers to fit specific patterns, area codes, or country codes to meet the precise requirements of your test scenarios`},
+              // {title: `Cost Savings`, text: `Reduce the need for purchasing additional SIM cards or services for testing purposes, saving on operational costs`},
+              // {title: `Speed and Accessibility`, text: `Instantly generate phone numbers through a user-friendly interface, streamlining the workflow for developers, testers, and casual users`},
+              // {title: `Compliance and Security Testing`, text: `Verify that your application correctly handles phone numbers in compliance with data protection regulations and security standards`},
+              {title: `Versatility for Different Use Cases`, text: `Whether for app development, marketing campaigns, online registrations, or privacy concerns, the tool is versatile enough to cater to a broad spectrum of needs`}
+            ]?.map((item, index) => <li key={index}>
+              <span className="font-bold pr-2">{item?.title}:</span>
+              {item?.text}
+            </li>
+            )}
+          </ol>
+          <Image
             // fill
             alt="Generate numbers for testing and privacy"
             src={Benifit}
