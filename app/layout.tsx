@@ -14,7 +14,7 @@ const BODY_PADDING = "px-4 sm:px-6"
 
 export const metadata: Metadata = {
   title: `Random Phone Number Generator`,
-  description: "Generate random phone numbers across multiple countries and regions with our versatile tool.",
+  description: "Generate phone number randomly across multiple countries and regions with our versatile tool.",
   icons: [
     {rel: "icon", url: "/favicon.ico" }/* ,
     {rel: "icon", url: "/favicon-32x32.png" },
