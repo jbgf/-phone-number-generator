@@ -34,7 +34,7 @@ export function EmojiForm({ country }: EmojiFormProps) {
     generatePhoneNumber()
    }, [country])
   const generatePhoneNumber = () => {
-    const phone = currentLocale.phone?.number()
+    const phone = currentLocale.phone?.number({'style': 'international'})
     setPhoneDisplay(phone)
   }
   const copy = (text: string) => {

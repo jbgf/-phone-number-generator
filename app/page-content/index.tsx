@@ -6,6 +6,7 @@ import { EmojiForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
 import Image from "next/image"
 import Benifit from '../images/content/DSC00229-tinypng.jpg'
+import { H2Header } from "../server-components/h2-header"
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
@@ -35,7 +36,9 @@ export const PageContent = (props: PageContentProps) => {
           })}
         </section>
         <div className="pt-24">
-          <h1 className="text-3xl pb-8 text-center font-bold" >How a Fake Random {countryName} Phone Number Generator Can Help</h1>
+          <H2Header>What is the format of the generated phone number</H2Header>
+          <p className="pb-8">We generate phone number in the E.123 international format, e.g. `+15551234567`</p>
+          <H2Header>How a Fake Random {countryName} Phone Number Generator Can Help</H2Header>
           <ol className="list-decimal list-inside pb-8">
             {[
               {title: `Ease of Testing`, text: `Automate and simplify the testing process for developers and QA engineers by generating cell phone number or mobile phone number directly within TestComplete or other testing environments, reducing manual input and errors`},
