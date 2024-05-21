@@ -1,9 +1,10 @@
 "use client";
 export default function DevTKD () {
   const isDev = process.env.NODE_ENV === "development"
+  if (!isDev) return null
   const params = new URLSearchParams(window.location.search);
   const mode = params.get('mode');
-  if (!isDev || mode !== 'tkd') return null
+  if (mode !== 'tkd') return null
 
   return (
     <div className="absolute top-0 right-0 z-50 bg-gray-400 p-2 ">
