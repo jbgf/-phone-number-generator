@@ -17,7 +17,16 @@ export const PageContent = (props: PageContentProps) => {
   const countryName = (locales.filter(item => item.label === country)?.[0]?.localeName || country?.replace('_phonenumber', '')) || '';
   return (
     <>
-      <div className="py-[15vh] sm:py-[20vh] flex flex-col items-center justify-center">
+      <Image
+          // fill
+          alt="Generate numbers for testing and privacy"
+          src={Benifit}
+          // src={"/content/DSC00229-tinypng.jpg"}
+          // width={undefined}
+          sizes="object-fill"
+          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      <div className="py-[15vh] sm:py-[6vh] flex flex-col items-center justify-center">
         <h2 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
           Generate Phone Number{props.isHome ? `` : ` for ${countryName}`} with Just a Click!
         </h2>
@@ -38,44 +47,29 @@ export const PageContent = (props: PageContentProps) => {
         <div className="pt-24">
           <H2Header>What is the format of the generated phone number</H2Header>
           <p className="pb-8">We generate phone number in the E.123 international format, e.g. `+15551234567`</p>
-          <H2Header>How a Fake Random {countryName} Phone Number Generator Can Help</H2Header>
-          <ol className="list-decimal list-inside pb-8">
-            {[
-              {title: `Ease of Testing`, text: `Automate and simplify the testing process for developers and QA engineers by generating cell phone number or mobile phone number directly within TestComplete or other testing environments, reducing manual input and errors`},
-              {title:`Enhanced Privacy Protection`, text: `Safeguard personal privacy by using generated phone numbers for registrations, avoiding the need to disclose personal numbers on potentially insecure or spam-prone platforms`},
-              {title: `Global Reach`, text: `Generate phone numbers from a wide range of countries, supporting international testing and user registration scenarios without geographical limitations`},
-              // {Efficiency in Bulk Generation: Quickly produce a large volume of phone numbers to test the capacity and performance of SMS services, databases, or customer relationship management (CRM) systems.
-              // {title: `Improved UX/UI Testing`, text: `Use generated phone numbers to test and ensure that your application's user interface accommodates various phone number formats properly`},
-              {title: `Customization Options`, text: `Tailor the generated phone numbers to fit specific patterns, area codes, or country codes to meet the precise requirements of your test scenarios`},
-              // {title: `Cost Savings`, text: `Reduce the need for purchasing additional SIM cards or services for testing purposes, saving on operational costs`},
-              // {title: `Speed and Accessibility`, text: `Instantly generate phone numbers through a user-friendly interface, streamlining the workflow for developers, testers, and casual users`},
-              // {title: `Compliance and Security Testing`, text: `Verify that your application correctly handles phone numbers in compliance with data protection regulations and security standards`},
-              {title: `Versatility for Different Use Cases`, text: `Whether for app development, marketing campaigns, online registrations, or privacy concerns, the tool is versatile enough to cater to a broad spectrum of needs`}
-            ]?.map((item, index) => <li key={index}>
-              <span className="font-bold pr-2">{item?.title}:</span>
-              {item?.text}
-            </li>
-            )}
-          </ol>
-          <Image
-            // fill
-            alt="Generate numbers for testing and privacy"
-            src={Benifit}
-            // src={"/content/DSC00229-tinypng.jpg"}
-            // width={undefined}
-            sizes="object-fill"
-            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          </div>
-        <div className="pt-24">
-          
+          <H2Header>How a Fake Random Phone Number Generator Can Help</H2Header>
+            <ol className="list-decimal list-inside pb-8">
+              {[
+                {title: `Ease of Testing`, text: `Automate and simplify the testing process for developers and QA engineers by generating cell phone number or mobile phone number directly within TestComplete or other testing environments, reducing manual input and errors`},
+                {title:`Enhanced Privacy Protection`, text: `Safeguard personal privacy by using generated phone numbers for registrations, avoiding the need to disclose personal numbers on potentially insecure or spam-prone platforms`},
+                {title: `Global Reach`, text: `Generate phone numbers from a wide range of countries, supporting international testing and user registration scenarios without geographical limitations`},
+                // {Efficiency in Bulk Generation: Quickly produce a large volume of phone numbers to test the capacity and performance of SMS services, databases, or customer relationship management (CRM) systems.
+                // {title: `Improved UX/UI Testing`, text: `Use generated phone numbers to test and ensure that your application's user interface accommodates various phone number formats properly`},
+                {title: `Customization Options`, text: `Tailor the generated phone numbers to fit specific patterns, area codes, or country codes to meet the precise requirements of your test scenarios`},
+                // {title: `Cost Savings`, text: `Reduce the need for purchasing additional SIM cards or services for testing purposes, saving on operational costs`},
+                // {title: `Speed and Accessibility`, text: `Instantly generate phone numbers through a user-friendly interface, streamlining the workflow for developers, testers, and casual users`},
+                // {title: `Compliance and Security Testing`, text: `Verify that your application correctly handles phone numbers in compliance with data protection regulations and security standards`},
+                {title: `Versatility for Different Use Cases`, text: `Whether for app development, marketing campaigns, online registrations, or privacy concerns, the tool is versatile enough to cater to a broad spectrum of needs`}
+              ]?.map((item, index) => <li key={index}>
+                <span className="font-bold pr-2">{item?.title}:</span>
+                {item?.text}
+              </li>
+              )}
+            </ol>
           <UserGuide isHome={props.isHome} />
-        </div>
+          </div>
       </div>
 
-      {/* <Suspense>
-        <EmojiGrid prompt={prompt} />
-      </Suspense> */}
     </>
   )
 }

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
+import DevTKD from './server-components/dev-tdk';
 const inter = Inter({ subsets: ["latin"] });
 const BODY_PADDING = "px-4 sm:px-6"
 
@@ -85,6 +86,7 @@ export default function RootLayout({
       </body>
       </Wrapper>
       <GoogleAnalytics gaId="G-FL3XTQJHV4" />
+      <DevTKD />
     </html>
   );
 }
