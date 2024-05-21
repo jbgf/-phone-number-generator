@@ -10,11 +10,12 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
 import DevTKD from './server-components/dev-tdk';
+import { generateTitle } from '@/util';
 const inter = Inter({ subsets: ["latin"] });
 const BODY_PADDING = "px-4 sm:px-6"
 
 export const metadata: Metadata = {
-  title: `Random Phone Number Generator`,
+  title: generateTitle(),
   description: "Generate phone number randomly across multiple countries and regions with our versatile tool.",
   icons: [
     {rel: "icon", url: "/favicon.ico" }/* ,

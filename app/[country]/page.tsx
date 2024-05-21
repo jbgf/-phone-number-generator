@@ -3,6 +3,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 
 import { PageContent } from "../page-content";
 import { CountryLabels, locales } from "../const";
+import { generateTitle } from '@/util';
 type Props = {
   params: { country: CountryLabels }
   searchParams: { [key: string]: string | string[] | undefined }
@@ -25,7 +26,7 @@ export async function generateMetadata(
   const localeName = locales?.filter(locale => (locale?.label?.toLocaleLowerCase?.() === label?.toLocaleLowerCase?.()
     || (locale?.label?.toLocaleLowerCase?.()?.indexOf(label?.toLocaleLowerCase?.()) > -1)))?.[0]?.localeName
   return {
-    title: `Random Phone Number Generator ${localeName}`,
+    title: generateTitle(localeName),
     description: `generate phone number in ${localeName} with our versatile tool.`,
 
   }
