@@ -3,7 +3,7 @@ import { Metadata, ResolvingMetadata } from 'next'
 
 import { PageContent } from "../page-content";
 import { CountryLabels, locales } from "../const";
-import { generateTitle } from '@/util';
+import { generateDescription, generateTitle } from '@/util';
 type Props = {
   params: { country: CountryLabels }
   searchParams: { [key: string]: string | string[] | undefined }
@@ -27,12 +27,12 @@ export async function generateMetadata(
     || (locale?.label?.toLocaleLowerCase?.()?.indexOf(label?.toLocaleLowerCase?.()) > -1)))?.[0]?.localeName
   return {
     title: generateTitle(localeName),
-    description: `generate phone number in ${localeName} with our versatile tool.`,
+    description: generateDescription(localeName)
 
   }
 }
 export default function CountryPage({params}: {params: {country: CountryLabels}}) {
-  console.log(`CountryPage.....params....`, params, )
+  // console.log(`CountryPage.....params....`, params, )
   return (
     <PageContent country={params?.country}  />
   );

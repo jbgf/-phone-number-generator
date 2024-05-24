@@ -38,13 +38,16 @@ export const PageContent = (props: PageContentProps) => {
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
           <EmojiForm country={country} />
         </div>
-        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 place-items-center pt-10">
-          {locales?.filter(item => item.label !== country).map(item => {
-            return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
-            } title={`${item.localeName} phone number generator`}>{item.localeName}</Link>
-          })}
-        </section>
-        <div className="pt-24">
+
+        <div className="pt-36">
+          <H2Header>Other Country and Zone</H2Header>
+          <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 place-items-center pb-8">
+            {locales?.filter(item => item.label !== country).map(item => {
+              return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
+              } title={`${item.localeName} phone number generator`}>{item.localeName}</Link>
+            })}
+          </section>
+          
           <H2Header>What is the format of the generated phone number</H2Header>
           <p className="pb-8">We generate phone number in the E.123 international format, e.g. `+15551234567`</p>
           <H2Header>How a Fake Random Phone Number Generator Can Help</H2Header>
