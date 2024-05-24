@@ -18,7 +18,7 @@ export enum CountryLabels {
   Indonesia = 'Indonesia_phonenumber',
   Italy = 'Italy_phonenumber',
   Vietnam = 'Vietnam_phonenumber',
-  Korea = 'Korea_phonenumber',
+  SouthKorea = 'SouthKorea_phonenumber',
   Netherlands = 'Netherlands_phonenumber',
   Brazil = 'Brazil_phonenumber'
 }
@@ -64,9 +64,9 @@ export const locales: {
         localeName: 'Hongkong'
     },{
         locale: 'ko',
-        label: CountryLabels.Korea,
+        label: CountryLabels.SouthKorea,
         icon: KR,
-        localeName: 'Korea'
+        localeName: 'SouthKorea'
     },{
         locale: 'it',
         label: CountryLabels.Italy,
