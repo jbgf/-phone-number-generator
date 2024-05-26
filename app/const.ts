@@ -1,5 +1,5 @@
 
-import { US, GB, ES, FR, HK, GH, CA, RU, DE, KR, CN, FlagComponent, VN,IT,IN, BR, SE, ID, NL } from 'country-flag-icons/react/3x2'
+import { US, GB, ES, FR, HK, GH, CA, RU, DE, KR, CN, FlagComponent, AU, VN,IT,IN, BR, SE, ID, NL } from 'country-flag-icons/react/3x2'
 import type { allFakers } from '@faker-js/faker'
 /** shown in url */
 export enum CountryLabels {
@@ -10,6 +10,7 @@ export enum CountryLabels {
   Hk = 'HK_phonenumber',
   Ghana = 'Ghana_phonenumber',
   Canada = 'Canada_phonenumber',
+  Australia = 'Australia_phonenumber',
   Russia = 'Russia_phonenumber',
   German = 'German_phonenumber',
   China = 'China_phonenumber',
@@ -22,6 +23,7 @@ export enum CountryLabels {
   Netherlands = 'Netherlands_phonenumber',
   Brazil = 'Brazil_phonenumber'
 }
+export const BRAND_NAME = `NumGenix`;
 export const locales: {
     /** faker locale */
     locale: keyof typeof allFakers;
@@ -38,6 +40,7 @@ export const locales: {
         localeName: 'USA'
 
     },
+    
     {
         locale: 'en_CA', 
         label: CountryLabels.Canada,
@@ -62,6 +65,11 @@ export const locales: {
         label: CountryLabels.Hk,
         icon: HK,
         localeName: 'Hongkong'
+    },{
+        locale: 'en_AU', 
+        label: CountryLabels.Australia,
+        icon: AU,
+        localeName: 'Australia'
     },{
         locale: 'ko',
         label: CountryLabels.SouthKorea,

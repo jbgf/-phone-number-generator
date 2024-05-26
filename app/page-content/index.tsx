@@ -40,7 +40,7 @@ export const PageContent = (props: PageContentProps) => {
         </div>
 
         <div className="pt-36">
-          <H2Header>Other Country and Zone</H2Header>
+          <H2Header>Other countries and regions</H2Header>
           <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 place-items-center pb-8">
             {locales?.filter(item => item.label !== country).map(item => {
               return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
