@@ -21,7 +21,7 @@ export function EmojiForm({ country }: EmojiFormProps) {
   const [phoneDisplay, setPhoneDisplay] = useState('')
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk
-    const item = locales?.filter(item => item.label?.toLocaleLowerCase?.() === country?.toLocaleLowerCase?.())?.[0] || locales[0]
+    const item = locales?.filter(item => item.label?.toLocaleLowerCase?.()?.indexOf(country?.toLocaleLowerCase?.()!) > -1)?.[0] || locales[0]
     return item;
   }, [country])
   // const [formState, formAction] = useFormState(createEmoji)
