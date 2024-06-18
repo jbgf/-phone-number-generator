@@ -7,6 +7,9 @@ import { UserGuide } from "../user-guide"
 import Image from "next/image"
 import Benifit from '../images/content/DSC00229-tinypng.jpg'
 import { H2Header } from "../server-components/h2-header"
+import cn from 'classnames'
+import { BODY_PADDING } from "../layout"
+
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
@@ -16,7 +19,23 @@ export const PageContent = (props: PageContentProps) => {
   const { children, country } = props;
   const countryName = (locales.filter(item => item.label === country)?.[0]?.localeName || country?.replace('_phonenumber', '')) || '';
   return (
-    <>
+    <div className="relative">
+      <header
+          className={cn(
+            "bg-transparent absolute top-0 left-0 z-20 w-full py-3 flex flex-row flex-nowrap justify-between max-w-5xl mx-auto h-14 items-stretch animate-in fade-in slide-in-from-top-4 duration-1000 ease-in-out",
+            BODY_PADDING
+          )}
+        >
+          <Link
+            className="text-white text-lg font-medium flex flex-row flex-nowrap items-center justify-center gap-x-1.5 pr-1.5 leading-none rounded-lg"
+            href="/"
+          >
+            
+            <h1>Random Phone Number Generator</h1>
+          </Link>
+
+          
+        </header>
       <Image
           // fill
           alt="Generate numbers for testing and privacy"
@@ -73,6 +92,6 @@ export const PageContent = (props: PageContentProps) => {
           </div>
       </div>
 
-    </>
+    </div>
   )
 }
