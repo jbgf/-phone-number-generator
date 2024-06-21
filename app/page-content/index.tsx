@@ -5,7 +5,6 @@ import { EmojiCount } from "../emoji-count"
 import { EmojiForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
 import Image from "next/image"
-import Benifit from '../images/content/DSC00229-tinypng.jpg'
 import { H2Header } from "../server-components/h2-header"
 import cn from 'classnames'
 import { BODY_PADDING } from "../layout"
@@ -20,31 +19,8 @@ export const PageContent = (props: PageContentProps) => {
   const countryName = (locales.filter(item => item.label === country)?.[0]?.localeName || country?.replace('_phonenumber', '')) || '';
   return (
     <div className="relative">
-      <header
-          className={cn(
-            "bg-transparent absolute top-0 left-0 z-20 w-full py-3 flex flex-row flex-nowrap justify-between max-w-5xl mx-auto h-14 items-stretch animate-in fade-in slide-in-from-top-4 duration-1000 ease-in-out",
-            BODY_PADDING
-          )}
-        >
-          <Link
-            className="text-white text-lg font-medium flex flex-row flex-nowrap items-center justify-center gap-x-1.5 pr-1.5 leading-none rounded-lg"
-            href="/"
-          >
-            
-            <h1>Random Phone Number Generator</h1>
-          </Link>
-
-          
-        </header>
-      <Image
-          // fill
-          alt="Generate numbers for testing and privacy"
-          src={Benifit}
-          // src={"/content/DSC00229-tinypng.jpg"}
-          // width={undefined}
-          sizes="object-fill"
-          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+      
+     
       <div className="py-[15vh] sm:py-[6vh] flex flex-col items-center justify-center">
         <h2 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
           Generate Phone Number{props.isHome ? `` : ` for ${countryName}`} with Just a Click!

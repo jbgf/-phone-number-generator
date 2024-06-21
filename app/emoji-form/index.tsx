@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { createEmoji } from "./action"
 import { SubmitButton } from "./submit-button"
-import { ConfigProvider, Flex, Input, Select, Space } from "antd"
+import { ConfigProvider, Flex, Input, Select, Space, message } from "antd"
 import { US } from 'country-flag-icons/react/3x2'
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, allFakers } from '@faker-js/faker'
@@ -16,7 +16,7 @@ import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 interface EmojiFormProps {
   country?: CountryLabels
 }
-
+let timer: NodeJS.Timeout;
 export function EmojiForm({ country }: EmojiFormProps) {
   const [phoneDisplay, setPhoneDisplay] = useState('')
   const config = useMemo(() => {
@@ -31,11 +31,19 @@ export function EmojiForm({ country }: EmojiFormProps) {
     return FakerFN
   }, [config])
   useEffect(() => { 
-    generatePhoneNumber()
+    if (country) generatePhoneNumber()
    }, [country])
   const generatePhoneNumber = () => {
-    const phone = currentLocale.phone?.number({'style': 'international'})
-    setPhoneDisplay(phone)
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      const phone = currentLocale.phone?.number({'style': 'international'})
+      setPhoneDisplay(phone)
+      message.success(`Generated ${phone}`)
+    }, 300);
+   
+
   }
   const copy = (text: string) => {
       // 首先检查是否支持 navigator.clipboard.writeText
