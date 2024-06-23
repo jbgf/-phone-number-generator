@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Inspector } from 'react-dev-inspector'
-import Benifit from './images/content/DSC00229-tinypng.jpg'
+import Benifit from './images/content/protect-phone-privacy.jpg'
 
 import cn from 'classnames'
 import Link from "next/link";
