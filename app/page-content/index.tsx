@@ -9,6 +9,7 @@ import { H2Header } from "../server-components/h2-header"
 import cn from 'classnames'
 import { BODY_PADDING } from "../layout"
 
+import { Space } from "antd"
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
@@ -38,8 +39,13 @@ export const PageContent = (props: PageContentProps) => {
           <H2Header>Other countries and regions</H2Header>
           <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 place-items-center pb-8">
             {locales?.filter(item => item.label !== country).map(item => {
-              return <Link key={item.label} className="whitespace-nowrap hover:text-sky-500 underline" href={`/${item.label}`
-              } title={`${item.localeName} phone number generator`}>{item.localeName}</Link>
+              return <Link key={item.label} className="whitespace-nowrap " href={`/${item.label}`
+              } title={`${item.localeName} phone number generator`}>
+                <Space className="text-gray-800">
+                  {item?.icon && <item.icon className="size-4" />}
+                  <span className="hover:text-sky-500 underline">{item.localeName}</span>
+                </Space>
+                </Link>
             })}
           </section>
           
