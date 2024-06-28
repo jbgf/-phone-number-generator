@@ -1,5 +1,6 @@
 
-import { US, GB, ES, FR, HK, GH, CA, RU, DE, KR, CN, FlagComponent, AU, VN,IT,IN, BR, SE, ID, NL, IR, IE } from 'country-flag-icons/react/3x2'
+import { US, GB, ES, FR, HK, GH, CA, RU, DE, KR, CN, FlagComponent, AU, VN,IT,IN, BR, SE, ID, NL, PT, IE } from 'country-flag-icons/react/3x2'
+import Portugal from './images/country-flags/Portugal.png'
 import type { allFakers } from '@faker-js/faker'
 /** shown in url */
 export enum CountryLabels {
@@ -22,7 +23,8 @@ export enum CountryLabels {
   Vietnam = 'Vietnam_phonenumber',
   SouthKorea = 'SouthKorea_phonenumber',
   Netherlands = 'Netherlands_phonenumber',
-  Brazil = 'Brazil_phonenumber'
+  Brazil = 'Brazil_phonenumber',
+  Portugal = 'Portugal_phonenumber'
 }
 export const BRAND_NAME = `NumGenix`;
 export const locales: {
@@ -144,7 +146,14 @@ export const locales: {
             icon: ES,
             localeName: 'Spain'
         
-    }]
+    }, {
+        
+        label: CountryLabels.Portugal,
+        locale: 'pt_PT',
+        icon: PT,
+        localeName: 'Portugal'
+
+}]
 
 export enum BrandTitles_Output {
     Home = `Versatile Phone Number`
