@@ -11,7 +11,7 @@ export const UserGuide = (props: {isHome?: boolean}) => {
         <ol className="list-decimal list-inside italic">
           <li>When you land on the page, we automatically generate a new phone number for you.</li>
           <li>To generate random phone number, simply click the <EnterOutlined /> icon.</li>
-          <li>Once you have the number you need, click the <CopyOutlined /> icon to copy it to your clipboard.</li>
+          <li>Once you have the number you need, click the copy button to copy it to your clipboard.</li>
         </ol>
     </>
   )
