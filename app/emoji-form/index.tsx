@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { createEmoji } from "./action"
 import { SubmitButton } from "./submit-button"
-import { ConfigProvider, Flex, Input, Select, Space, message } from "antd"
-import { US } from 'country-flag-icons/react/3x2'
+import { Button, ConfigProvider, Flex, Input, Select, Space, message } from "antd"
+import { TinyColor } from '@ctrl/tinycolor';
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, allFakers } from '@faker-js/faker'
 import { CountryLabels, locales } from "../const"
@@ -100,52 +100,75 @@ export function EmojiForm({ country }: EmojiFormProps) {
     }
   ) */
   const ICON = config?.icon;
+  const getHoverColors = (colors: string[]) =>
+    colors.map((color) => new TinyColor(color).lighten(5).toString());
+  const getActiveColors = (colors: string[]) =>
+    colors.map((color) => new TinyColor(color).darken(5).toString());
+  const colors2 = ['#6253E1', '#04BEFE']//['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
   return (
-    <Flex gap="small">
-    <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
-      {/* <Space.Compact style={{width: '100%'}}> */}
-     {/*  <ConfigProvider
-  theme={{
-    components: {
-      Select: {
-        'selectorBg': 'transparent',
+    <Flex gap="small" align="center">
+      <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
+        {/* <Space.Compact style={{width: '100%'}}> */}
+      {/*  <ConfigProvider
+    theme={{
+      components: {
+        Select: {
+          'selectorBg': 'transparent',
+        },
       },
-    },
-  }}
->
-      <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
-      </ConfigProvider> */}
-      <Input
-        prefix={<ICON title={config?.localeName} className="size-5  mr-2" />}
-        // defaultValue={initialPrompt}
-        type="text"
-        name="prompt"
-        variant="borderless"
-        /* onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault()
-            submitRef.current?.click()
-          }
-        }} */
-        value={phoneDisplay}
-        readOnly
-        suffix={<Space>
-          <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5"/>
-          </Space>}
-        placeholder="cat"
-        className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
-        py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white " 
-        // ref={submitRef} 
-        
-        />
-        
-      {/* </Space.Compact> */}
-      {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
-    </form>
-      <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
-        <CopyOutlined onClick={() => copy(phoneDisplay)} 
-          className="cursor-pointer text-2xl !text-gray-400 hover:!text-gray-500 active:!text-gray-900 transition-all" />
-      </ToolTipWrapper>
+    }}
+  >
+        <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
+        </ConfigProvider> */}
+        <Input
+          prefix={<ICON title={config?.localeName} className="size-5  mr-2" />}
+          // defaultValue={initialPrompt}
+          type="text"
+          name="prompt"
+          variant="borderless"
+          /* onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault()
+              submitRef.current?.click()
+            }
+          }} */
+          value={phoneDisplay}
+          readOnly
+          suffix={<Space>
+            <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5"/>
+            </Space>}
+          placeholder="cat"
+          className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
+          py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white " 
+          // ref={submitRef} 
+          
+          />
+          
+        {/* </Space.Compact> */}
+        {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
+      </form>
+      
+        <ConfigProvider
+          theme={{
+            components: {
+              Button: {
+                colorPrimary: `linear-gradient(90deg,  ${colors2.join(', ')})`,
+                colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
+                colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
+                lineWidth: 0,
+              },
+            },
+          }}
+        >    
+          <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
+            <Button 
+              type="primary"
+              onClick={() => copy(phoneDisplay)} 
+              >
+              Copy  
+            </Button>
+        </ToolTipWrapper>
+        </ConfigProvider>
       
       </Flex>
   )
