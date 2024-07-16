@@ -4,27 +4,27 @@ import Portugal from './images/country-flags/Portugal.png'
 import type { allFakers } from '@faker-js/faker'
 /** shown in url */
 export enum CountryLabels {
-  Usa = 'USA_phonenumber',
-  Uk = 'Great_Britain_phonenumber',
-  Fr = 'French_phonenumber',
-  Es = 'Spain_phonenumber',
-  Hk = 'HK_phonenumber',
-  Ghana = 'Ghana_phonenumber',
-  Canada = 'Canada_phonenumber',
-  Australia = 'Australia_phonenumber',
-  Russia = 'Russia_phonenumber',
-  German = 'German_phonenumber',
-  China = 'China_phonenumber',
-  India = 'India_phonenumber',
-  Sweden = 'Sweden_phonenumber',
-  Ireland = 'Ireland_phonenumber',
-  Indonesia = 'Indonesia_phonenumber',
-  Italy = 'Italy_phonenumber',
-  Vietnam = 'Vietnam_phonenumber',
-  SouthKorea = 'SouthKorea_phonenumber',
-  Netherlands = 'Netherlands_phonenumber',
-  Brazil = 'Brazil_phonenumber',
-  Portugal = 'Portugal_phonenumber'
+  Usa = 'USA',
+  Uk = 'Great_Britain',
+  Fr = 'French',
+  Es = 'Spain',
+  Hk = 'HK',
+  Ghana = 'Ghana',
+  Canada = 'Canada',
+  Australia = 'Australia',
+  Russia = 'Russia',
+  German = 'German',
+  China = 'China',
+  India = 'India',
+  Sweden = 'Sweden',
+  Ireland = 'Ireland',
+  Indonesia = 'Indonesia',
+  Italy = 'Italy',
+  Vietnam = 'Vietnam',
+  SouthKorea = 'SouthKorea',
+  Netherlands = 'Netherlands',
+  Brazil = 'Brazil',
+  Portugal = 'Portugal'
 }
 export const BRAND_NAME = `NumGenix`;
 export const locales: {

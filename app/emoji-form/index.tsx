@@ -13,11 +13,11 @@ import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
 
-interface EmojiFormProps {
+interface GeneratorFormProps {
   country?: CountryLabels
 }
 let timer: NodeJS.Timeout;
-export function EmojiForm({ country }: EmojiFormProps) {
+export function GeneratorForm({ country }: GeneratorFormProps) {
   const [phoneDisplay, setPhoneDisplay] = useState('')
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk

@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { CountryLabels, locales } from "../const"
 import { EmojiCount } from "../emoji-count"
-import { EmojiForm } from "../emoji-form"
+import { GeneratorForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
 import Image from "next/image"
 import { H2Header } from "../server-components/h2-header"
@@ -10,6 +10,8 @@ import cn from 'classnames'
 import { BODY_PADDING } from "../layout"
 
 import { Space } from "antd"
+import NoFollowLink from "../server-components/no-follow-link"
+import { ExportOutlined } from "@ant-design/icons"
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
@@ -17,22 +19,23 @@ interface PageContentProps extends React.PropsWithChildren {
 
 export const PageContent = (props: PageContentProps) => {
   const { children, country } = props;
-  const countryName = (locales.filter(item => item.label === country)?.[0]?.localeName || country?.replace('_phonenumber', '')) || '';
+  const countryLabel = (locales.filter(item => item.label === props.country?.replace('_phonenumber', ''))?.[0]?.label) || '';
+  const countryName = countryLabel?.replace(/_/g, ' ') || '';
   return (
     <div className="relative">
       
      
       <div className="py-[15vh] sm:py-[6vh] flex flex-col items-center justify-center">
         <h2 className="font-medium text-2xl md:text-4xl text-black mb-3 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
-          Generate Phone Number{props.isHome ? `` : ` for ${countryName}`} with Just a Click!
+          Generate Phone Number{` for ${countryName}`} with Just a Click!
         </h2>
         
         <h3 className="text-gray-500 mb-12 text-base animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-          Random phone number generator {countryName} for Testing Purposes
+        {countryName} Random phone number generator for Testing Purposes
         </h3>
 
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-          <EmojiForm country={country} />
+          <GeneratorForm country={countryLabel} />
         </div>
 
         <div className="pt-36">
@@ -50,7 +53,13 @@ export const PageContent = (props: PageContentProps) => {
           </section>
           
           <H2Header>What is the format of the generated phone number</H2Header>
-          <p className="pb-8">We generate phone number in the E.123 international format, e.g. `+15551234567`</p>
+          <Space className="pb-8">
+            
+            We generate phone number in the E.123 international format, e.g. `+15551234567`
+            <NoFollowLink href={`https://en.wikipedia.org/wiki/E.123`}>
+              E.123 <ExportOutlined />
+            </NoFollowLink>
+          </Space>
           <H2Header>How a Fake Random Phone Number Generator Can Help</H2Header>
             <ol className="list-decimal list-inside pb-8">
               {[
