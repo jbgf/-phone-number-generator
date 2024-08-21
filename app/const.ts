@@ -164,3 +164,9 @@ export const locales: {
 export enum BrandTitles_Output {
     Home = `Versatile Phone Number`
 }
+/** 'human' | 'national' | 'international' */
+export enum GenerateStyles {
+    Human = 'human',
+    National = 'national',
+    International = 'international'
+}

@@ -12,3 +12,16 @@ export const generateDescription = (country?: string) => {
   }
   return `Protect your privacy with our random phone number generator, enhance software testing and data verification, setting up accounts, registrations and securing personal information`
 }
+
+export const LoopEnum = (enumObject: any, callBack?: (key: string) => void) => {
+  const arr = []
+  for (let item in enumObject) {
+    if (isNaN(Number(item))) {
+      // console.log(item); // 输出 "First", "Second", "Third"
+      callBack?.(item);
+      arr.push(item);
+    }
+  }
+  return arr;
+
+}
