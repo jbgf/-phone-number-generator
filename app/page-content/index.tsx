@@ -6,6 +6,7 @@ import { GeneratorForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
 import Image from "next/image"
 import { H2Header } from "../server-components/h2-header"
+
 import cn from 'classnames'
 import { BODY_PADDING } from "../layout"
 
@@ -16,12 +17,14 @@ import { LoopEnum } from "@/util"
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
+  style?: keyof typeof GenerateStyles
 }
 
 export const PageContent = (props: PageContentProps) => {
   const { children, country } = props;
   const countryLabel = (locales.filter(item => item.label === props.country?.replace('_phonenumber', ''))?.[0]?.label) || '';
   const countryName = countryLabel?.replace(/_/g, ' ') || '';
+  const style = props.style || GenerateStyles.International
   return (
     <div className="relative">
 
@@ -53,8 +56,14 @@ export const PageContent = (props: PageContentProps) => {
             })}
           </section>
 
-          <H2Header noMarginBottom>Other styles of generating phone numbers</H2Header>
-          {LoopEnum(GenerateStyles)?.map(key => <Button type="link" key={key}>{key}</Button>)}
+          <H2Header>Other styles of generating phone numbers</H2Header>
+          <Space>
+            {LoopEnum(GenerateStyles)?.filter(item => item.value !== style)?.map?.(item => <Link href={`?style=${item.value}`}
+              key={item.key}>
+              {item.value}
+            </Link>
+            )}
+          </Space>
           <H2Header>What is the format of the generated phone number</H2Header>
 
           <Space className="pb-8">
@@ -87,6 +96,6 @@ export const PageContent = (props: PageContentProps) => {
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }

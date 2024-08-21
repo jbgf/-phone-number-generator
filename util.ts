@@ -19,7 +19,7 @@ export const LoopEnum = (enumObject: any, callBack?: (key: string) => void) => {
     if (isNaN(Number(item))) {
       // console.log(item); // 输出 "First", "Second", "Third"
       callBack?.(item);
-      arr.push(item);
+      arr.push({ key: item, value: enumObject[item] });
     }
   }
   return arr;
