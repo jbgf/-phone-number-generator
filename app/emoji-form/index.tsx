@@ -7,7 +7,7 @@ import { Button, ConfigProvider, Flex, Input, Select, Space, message } from "ant
 import { TinyColor } from '@ctrl/tinycolor';
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, allFakers } from '@faker-js/faker'
-import { CountryLabels, locales } from "../const"
+import { CountryLabels, GenerateStyles, locales } from "../const"
 import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
@@ -15,9 +15,10 @@ import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 
 interface GeneratorFormProps {
   country?: CountryLabels
+  style?: GenerateStyles
 }
 let timer: NodeJS.Timeout;
-export function GeneratorForm({ country }: GeneratorFormProps) {
+export function GeneratorForm({ country, style }: GeneratorFormProps) {
   const [phoneDisplay, setPhoneDisplay] = useState('')
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk
@@ -25,64 +26,64 @@ export function GeneratorForm({ country }: GeneratorFormProps) {
     return item;
   }, [country])
   // const [formState, formAction] = useFormState(createEmoji)
-  const currentLocale = useMemo(() =>  {
+  const currentLocale = useMemo(() => {
     console.log(`local`, config.locale)
     const FakerFN = allFakers[config.locale]
     return FakerFN
   }, [config])
-  useEffect(() => { 
+  useEffect(() => {
     if (country) generatePhoneNumber()
-   }, [country])
+  }, [country])
   const generatePhoneNumber = () => {
     if (timer) {
       clearTimeout(timer)
     }
     timer = setTimeout(() => {
-      const phone = currentLocale.phone?.number({'style': 'international'})
+      const phone = currentLocale.phone?.number({ 'style': style || GenerateStyles.International })
       setPhoneDisplay(phone)
       message.success(`Generated ${phone}`)
     }, 300);
-   
+
 
   }
   const copy = (text: string) => {
-      // 首先检查是否支持 navigator.clipboard.writeText
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          console.log('Text copied to clipboard successfully!');
-        }).catch(err => {
-          console.error('Failed to copy text to clipboard', err);
-        });
-      } else {
-        // 降级方案：使用 document.execCommand() 方法
-        // 创建一个临时的 textarea 元素
-        const textarea = document.createElement('textarea');
-        // 将要复制的文本设置为 textarea 的值
-        textarea.value = text;
-        // 将 textarea 设置为不可见
-        textarea.setAttribute('readonly', '');
-        textarea.style.position = 'absolute';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        // 选择文本
-        textarea.select();
-        try {
-          // 执行复制命令
-          const successful = document.execCommand('copy');
-          const msg = successful ? 'successfully' : 'unsuccessfully';
-          console.log(`Fallback: Copying text command was ${msg}`);
-        } catch (err) {
-          console.error('Fallback: Oops, unable to copy', err);
-        }
-        // 移除临时创建的 textarea
-        document.body.removeChild(textarea);
+    // 首先检查是否支持 navigator.clipboard.writeText
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        console.log('Text copied to clipboard successfully!');
+      }).catch(err => {
+        console.error('Failed to copy text to clipboard', err);
+      });
+    } else {
+      // 降级方案：使用 document.execCommand() 方法
+      // 创建一个临时的 textarea 元素
+      const textarea = document.createElement('textarea');
+      // 将要复制的文本设置为 textarea 的值
+      textarea.value = text;
+      // 将 textarea 设置为不可见
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      // 选择文本
+      textarea.select();
+      try {
+        // 执行复制命令
+        const successful = document.execCommand('copy');
+        const msg = successful ? 'successfully' : 'unsuccessfully';
+        console.log(`Fallback: Copying text command was ${msg}`);
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
       }
+      // 移除临时创建的 textarea
+      document.body.removeChild(textarea);
     }
-    
-    // 调用函数进行测试
-    // copyTextToClipboard('要复制的文本');
-    
-  
+  }
+
+  // 调用函数进行测试
+  // copyTextToClipboard('要复制的文本');
+
+
   /* useEffect(() => {
     if (!formState) return
     toast.error(formState.message)
@@ -109,7 +110,7 @@ export function GeneratorForm({ country }: GeneratorFormProps) {
     <Flex gap="small" align="center">
       <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
         {/* <Space.Compact style={{width: '100%'}}> */}
-      {/*  <ConfigProvider
+        {/*  <ConfigProvider
     theme={{
       components: {
         Select: {
@@ -135,41 +136,41 @@ export function GeneratorForm({ country }: GeneratorFormProps) {
           value={phoneDisplay}
           readOnly
           suffix={<Space>
-            <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5"/>
-            </Space>}
+            <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5" />
+          </Space>}
           placeholder="cat"
           className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
-          py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white " 
-          // ref={submitRef} 
-          
-          />
-          
+          py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white "
+        // ref={submitRef} 
+
+        />
+
         {/* </Space.Compact> */}
         {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
       </form>
-      
-        <ConfigProvider
-          theme={{
-            components: {
-              Button: {
-                colorPrimary: `linear-gradient(90deg,  ${colors2.join(', ')})`,
-                colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
-                colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
-                lineWidth: 0,
-              },
+
+      <ConfigProvider
+        theme={{
+          components: {
+            Button: {
+              colorPrimary: `linear-gradient(90deg,  ${colors2.join(', ')})`,
+              colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
+              colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
+              lineWidth: 0,
             },
-          }}
-        >    
-          <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
-            <Button 
-              type="primary"
-              onClick={() => copy(phoneDisplay)} 
-              >
-              Copy  
-            </Button>
+          },
+        }}
+      >
+        <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
+          <Button
+            type="primary"
+            onClick={() => copy(phoneDisplay)}
+          >
+            Copy
+          </Button>
         </ToolTipWrapper>
-        </ConfigProvider>
-      
-      </Flex>
+      </ConfigProvider>
+
+    </Flex>
   )
 }

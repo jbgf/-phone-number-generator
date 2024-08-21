@@ -17,7 +17,7 @@ import { LoopEnum } from "@/util"
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
-  style?: keyof typeof GenerateStyles
+  style?: GenerateStyles
 }
 
 export const PageContent = (props: PageContentProps) => {
@@ -39,7 +39,7 @@ export const PageContent = (props: PageContentProps) => {
         </h3>
 
         <div className="max-w-md space-y-4 w-full animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-          <GeneratorForm country={countryLabel} />
+          <GeneratorForm country={countryLabel} style={style} />
         </div>
 
         <div className="pt-36">
@@ -57,7 +57,7 @@ export const PageContent = (props: PageContentProps) => {
           </section>
 
           <H2Header>Other styles of generating phone numbers</H2Header>
-          <Space>
+          <Space className="pb-8">
             {LoopEnum(GenerateStyles)?.filter(item => item.value !== style)?.map?.(item => <Link href={`?style=${item.value}`}
               key={item.key}>
               {item.value}

@@ -32,7 +32,7 @@ export async function generateMetadata(
   }
 }
 export default function CountryPage({ params, searchParams }: {
-  searchParams: { style: keyof typeof GenerateStyles | undefined },
+  searchParams: { style: GenerateStyles | undefined },
   params: { country: CountryLabels }
 }) {
   // console.log(`CountryPage.....params....`, params, )
