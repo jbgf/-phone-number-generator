@@ -63,7 +63,7 @@ export const PageContent = (props: PageContentProps) => {
             {LoopEnum(GenerateStyles)/* ?.sort((a, b) => {
               if (a.value === style) return -1
               return 1
-            }) */?.map?.(item => item?.value === style ? <span>{item.value}</span> : <Link href={`?style=${item.value}`}
+            }) */?.map?.(item => item?.value === style ? <span key={item.key}>{item.value}</span> : <Link href={`?style=${item.value}`}
               key={item.key}>
               {item.value}
             </Link>
