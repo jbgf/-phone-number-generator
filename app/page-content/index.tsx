@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import { CountryLabels, GenerateStyles, locales } from "../const"
+import { CountryLabels, GenerateStyles, StyleMaps, locales } from "../const"
 import { EmojiCount } from "../emoji-count"
 import { GeneratorForm } from "../emoji-form"
 import { UserGuide } from "../user-guide"
@@ -25,6 +25,8 @@ export const PageContent = (props: PageContentProps) => {
   const countryLabel = (locales.filter(item => item.label === props.country?.replace('_phonenumber', ''))?.[0]?.label) || '';
   const countryName = countryLabel?.replace(/_/g, ' ') || '';
   const style = props.style || GenerateStyles.International
+  // console.log(style, 'style')
+  const egItem = StyleMaps?.get(style);
   return (
     <div className="relative">
 
@@ -46,7 +48,7 @@ export const PageContent = (props: PageContentProps) => {
           <H2Header>Other countries and regions</H2Header>
           <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-4 place-items-center pb-8">
             {locales?.filter(item => item.label !== country).map(item => {
-              return <Link key={item.label} className="whitespace-nowrap " href={`/${item.label}`
+              return <Link key={item.label} className="whitespace-nowrap " href={`/${item.label}?style=${style}`
               } title={`${item.localeName} phone number generator`}>
                 <Space className="text-gray-800">
                   {item?.icon && <item.icon className="size-4" />}
@@ -58,7 +60,10 @@ export const PageContent = (props: PageContentProps) => {
 
           <H2Header>Other styles of generating phone numbers</H2Header>
           <Space className="pb-8">
-            {LoopEnum(GenerateStyles)?.filter(item => item.value !== style)?.map?.(item => <Link href={`?style=${item.value}`}
+            {LoopEnum(GenerateStyles)/* ?.sort((a, b) => {
+              if (a.value === style) return -1
+              return 1
+            }) */?.map?.(item => item?.value === style ? <span>{item.value}</span> : <Link href={`?style=${item.value}`}
               key={item.key}>
               {item.value}
             </Link>
@@ -66,13 +71,13 @@ export const PageContent = (props: PageContentProps) => {
           </Space>
           <H2Header>What is the format of the generated phone number</H2Header>
 
-          <Space className="pb-8">
+          <div className="pb-8">
 
-            We generate phone number in the E.123 international format, e.g. `+15551234567`
-            <NoFollowLink href={`https://en.wikipedia.org/wiki/E.123`}>
-              E.123 <ExportOutlined />
-            </NoFollowLink>
-          </Space>
+            We generate phone number in the format, e.g. {egItem?.eg}
+            {(!!egItem?.egLink?.link && !!egItem?.egLink?.title) && <span className="pl-2"><NoFollowLink href={egItem?.egLink?.link as string}>
+              {egItem?.egLink?.title} <ExportOutlined />
+            </NoFollowLink></span>}
+          </div>
           <H2Header>How a Fake Random Phone Number Generator Can Help</H2Header>
           <ol className="list-decimal list-inside pb-8">
             {[

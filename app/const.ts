@@ -170,3 +170,20 @@ export enum GenerateStyles {
     National = 'national',
     International = 'international'
 }
+
+export const StyleMaps = new Map([
+    [GenerateStyles.Human, { eg: '555-770-7727 or 555.770.7727 x1234' }],
+    [GenerateStyles.National, {
+        egLink: {
+            title: 'National conventions for writing telephone numbers',
+            link: `https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers`
+        },
+        eg: '(555) 123-4567'
+    }],
+    [GenerateStyles.International, {
+        egLink: {
+            title: 'E.123 international format',
+            link: `https://en.wikipedia.org/wiki/E.123`
+        }, eg: '+15551234567'
+    }]
+])

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: generateTitle(),
   description: generateDescription(),
   icons: [
-    {rel: "icon", url: "/favicon.ico" }/* ,
+    { rel: "icon", url: "/favicon.ico" }/* ,
     {rel: "icon", url: "/favicon-32x32.png" },
     { 
       rel: "apple-touch-icon", 
@@ -40,32 +40,32 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Wrapper>
-      <body className={cn(inter.className, "antialiased bg-gray-100")}>
-      <header
-          className={cn(
-            "h-80 bg-transparent top-0 left-0 z-20 w-full py-3 flex flex-row flex-nowrap justify-between mx-autox items-stretch animate-in fade-in slide-in-from-top-4 duration-1000 ease-in-out",
-            BODY_PADDING
-          )}
-          style={{backgroundImage: `url(${Benifit.src})`, backgroundPosition: 'bottom'}}
-        >
-          <Link
-            className="pt-20 text-white text-lg font-medium flex flex-row flex-nowrap justify-center gap-x-1.5 pr-1.5 leading-none rounded-lg"
-            href="/"
+        <body className={cn(inter.className, "antialiased bg-gray-100")}>
+          <header
+            className={cn(
+              "h-80 bg-transparent top-0 left-0 z-20 w-full py-3 flex flex-row flex-nowrap justify-between mx-autox items-stretch animate-in fade-in slide-in-from-top-4 duration-1000 ease-in-out",
+              BODY_PADDING
+            )}
+            style={{ backgroundImage: `url(${Benifit.src})`, backgroundPosition: 'bottom' }}
           >
-            
-            <h1 className="italic">Random Phone Number Generator</h1>
-          </Link>
+            <Link
+              className="pt-20 text-white text-lg font-medium flex flex-row flex-nowrap justify-center gap-x-1.5 pr-1.5 leading-none rounded-lg"
+              href="/"
+            >
 
-          
-        </header>
-        <main className={cn("min-h-screen flex items-stretch flex-col pb-28 max-w-5xl mx-auto", BODY_PADDING)}>
-          <AntdRegistry>{children}</AntdRegistry>
-        </main>
-        {/* <Providers /> */}
-      </body>
+              <h1 className="italic">Random Phone Number Generator</h1>
+            </Link>
+
+
+          </header>
+          <main className={cn("min-h-screen flex items-stretch flex-col pb-28 max-w-5xl mx-auto", BODY_PADDING)}>
+            <AntdRegistry>{children}</AntdRegistry>
+          </main>
+          {/* <Providers /> */}
+        </body>
       </Wrapper>
       <GoogleAnalytics gaId="G-FL3XTQJHV4" />
-      <DevTKD />
+      {/* <DevTKD /> */}
     </html>
   );
 }

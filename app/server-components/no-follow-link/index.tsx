@@ -9,7 +9,7 @@ interface IProps {
 }
 function NoFollowLink(props: IProps) {
   return (
-    <Link href={props.href} target="_blank" rel="nofollow" >
+    <Link className="text-blue-600 visited:text-purple-600" href={props.href} target="_blank" rel="nofollow" >
       {props.children}
     </Link>
   )
