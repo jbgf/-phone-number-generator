@@ -20,6 +20,7 @@ interface GeneratorFormProps {
 let timer: NodeJS.Timeout;
 export function GeneratorForm({ country, style }: GeneratorFormProps) {
   const [phoneNumbers, setPhoneNumbers] = useState<string[]>([])
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk
     const item = locales?.filter(item => item.label?.toLocaleLowerCase?.()?.indexOf(country?.toLocaleLowerCase?.()!) > -1)?.[0] || locales[0]
@@ -79,9 +80,20 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
   }
 
   const copyAll = () => {
+    if (phoneNumbers.length === 0) return
     const allNumbers = phoneNumbers.join('\n')
     copy(allNumbers)
     message.success('All numbers copied!')
+  }
+
+  const handleCopy = (phone: string, index: number) => {
+    copy(phone)
+    setCopiedIndex(index)
+    message.success('Number copied!')
+    // 重置复制状态
+    setTimeout(() => {
+      setCopiedIndex(null)
+    }, 500)
   }
 
   // 调用函数进行测试
@@ -126,7 +138,7 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
               <ICON title={config?.localeName} className="size-5 ml-2 inline-block" />
             </Button>
 
-            {phoneNumbers.length > 0 && (
+            {(
               <button
                 onClick={copyAll}
                 className="btn btn-outline btn-secondary"
@@ -147,32 +159,65 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
             <h3 className="card-title text-lg mb-4">Generated Numbers</h3>
             <div className="space-y-2">
               {phoneNumbers.map((phone, index) => (
-                <div
+                <div 
                   key={`${phone}-${index}`}
-                  className="flex items-center justify-between p-3 bg-base-200 rounded-lg hover:bg-base-300 transition-colors"
+                  className={`
+                    group relative flex items-center justify-between p-3 
+                    rounded-lg cursor-pointer
+                    transition-all duration-200 ease-in-out
+                    ${copiedIndex === index
+                      ? 'bg-success/10 scale-[0.99] border border-success/20'
+                      : 'bg-base-200 hover:bg-base-300 hover:shadow-md hover:-translate-y-0.5 border border-transparent hover:border-primary/20'
+                    }
+                  `}
                 >
-                  <span className="font-mono">{phone}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-base-content/60">
+                  {/* 左侧号码和序号 */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-base-content/60 group-hover:text-primary/60">
                       #{phoneNumbers.length - index}
                     </span>
-                    <button
-                      onClick={() => {
-                        copy(phone)
-                        message.success('Number copied!')
-                      }}
-                      className="btn btn-ghost btn-sm"
-                      title="Copy number"
-                    >
-                      <CopyOutlined className="size-4" />
-                    </button>
+                    <span className="font-mono text-base-content group-hover:text-primary transition-colors">
+                      {phone}
+                    </span>
                   </div>
+
+                  {/* 右侧复制按钮 - 现在是常驻显示 */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // 防止触发整行的点击事件
+                      handleCopy(phone, index);
+                    }}
+                    className={`
+                      btn btn-ghost btn-sm min-h-8 h-8
+                      hover:bg-primary/10 transition-all duration-200
+                      ${copiedIndex === index
+                        ? 'text-success bg-success/10'
+                        : 'text-base-content/70 hover:text-primary'
+                      }
+                    `}
+                    title="Copy number"
+                  >
+                    <CopyOutlined className={`
+                      size-4 transition-transform duration-200
+                      ${copiedIndex === index ? 'scale-125' : ''}
+                    `} />
+                    <span className="ml-1 text-xs">Copy</span>
+                  </button>
+
+                  {/* 点击整行复制 */}
+                  <button
+                    onClick={() => handleCopy(phone, index)}
+                    className="absolute inset-0 bg-transparent"
+                    aria-label={`Copy ${phone}`}
+                  />
                 </div>
               ))}
             </div>
           </div>
         </div>
       )}
+
+
 
       {/* 空状态提示 */}
       {phoneNumbers.length === 0 && (
