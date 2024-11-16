@@ -19,7 +19,7 @@ interface GeneratorFormProps {
 }
 let timer: NodeJS.Timeout;
 export function GeneratorForm({ country, style }: GeneratorFormProps) {
-  const [phoneDisplay, setPhoneDisplay] = useState('')
+  const [phoneNumbers, setPhoneNumbers] = useState<string[]>([])
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk
     const item = locales?.filter(item => item.label?.toLocaleLowerCase?.()?.indexOf(country?.toLocaleLowerCase?.()!) > -1)?.[0] || locales[0]
@@ -40,11 +40,9 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     }
     timer = setTimeout(() => {
       const phone = currentLocale.phone?.number({ 'style': style || GenerateStyles.International })
-      setPhoneDisplay(phone)
+      setPhoneNumbers(prev => [phone, ...prev].slice(0, 10))
       message.success(`Generated ${phone}`)
-    }, 300);
-
-
+    }, 300)
   }
   const copy = (text: string) => {
     // 首先检查是否支持 navigator.clipboard.writeText
@@ -80,6 +78,12 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     }
   }
 
+  const copyAll = () => {
+    const allNumbers = phoneNumbers.join('\n')
+    copy(allNumbers)
+    message.success('All numbers copied!')
+  }
+
   // 调用函数进行测试
   // copyTextToClipboard('要复制的文本');
 
@@ -107,70 +111,79 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     colors.map((color) => new TinyColor(color).darken(5).toString());
   const colors2 = ['#6253E1', '#04BEFE']//['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
   return (
-    <Flex gap="small" align="center">
-      <form className="bg-black rounded-xl shadow-lg h-fit flex flex-row px-1 items-center w-full">
-        {/* <Space.Compact style={{width: '100%'}}> */}
-        {/*  <ConfigProvider
-    theme={{
-      components: {
-        Select: {
-          'selectorBg': 'transparent',
-        },
-      },
-    }}
-  >
-        <Select showSearch defaultValue={"am"} className={styles.selector} placeholder="area code"  variant="borderless" options={options} />
-        </ConfigProvider> */}
-        <Input
-          prefix={<ICON title={config?.localeName} className="size-5  mr-2" />}
-          // defaultValue={initialPrompt}
-          type="text"
-          name="prompt"
-          variant="borderless"
-          /* onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault()
-              submitRef.current?.click()
-            }
-          }} */
-          value={phoneDisplay}
-          readOnly
-          suffix={<Space>
-            <EnterOutlined onClick={generatePhoneNumber} className="cursor-pointer !text-white size-5" />
-          </Space>}
-          placeholder="cat"
-          className="bg-transparent text-white placeholder:text-gray-400 ring-0 outline-none resize-none 
-          py-2.5 px-2 font-mono text-sm h-10 w-full transition-all duration-300 !text-white "
-        // ref={submitRef} 
+    <div className="w-full space-y-6">
+      {/* 生成按钮区域 */}
+      <div className="card bg-base-100 shadow-lg">
+        <div className="card-body p-4">
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={generatePhoneNumber}
+              type="primary"
+              size="large"
+              className="flex-1"
+            >
+              Generate Number
+              <ICON title={config?.localeName} className="size-5 ml-2 inline-block" />
+            </Button>
 
-        />
+            {phoneNumbers.length > 0 && (
+              <button
+                onClick={copyAll}
+                className="btn btn-outline btn-secondary"
+                title="Copy all numbers"
+              >
+                <CopyOutlined className="size-5" />
+                Copy All
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
 
-        {/* </Space.Compact> */}
-        {/* <input aria-hidden type="text" name="token" value={token} className="hidden" readOnly /> */}
-      </form>
+      {/* 号码列表区域 */}
+      {phoneNumbers.length > 0 && (
+        <div className="card bg-base-100 shadow-lg">
+          <div className="card-body p-4">
+            <h3 className="card-title text-lg mb-4">Generated Numbers</h3>
+            <div className="space-y-2">
+              {phoneNumbers.map((phone, index) => (
+                <div
+                  key={`${phone}-${index}`}
+                  className="flex items-center justify-between p-3 bg-base-200 rounded-lg hover:bg-base-300 transition-colors"
+                >
+                  <span className="font-mono">{phone}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-base-content/60">
+                      #{phoneNumbers.length - index}
+                    </span>
+                    <button
+                      onClick={() => {
+                        copy(phone)
+                        message.success('Number copied!')
+                      }}
+                      className="btn btn-ghost btn-sm"
+                      title="Copy number"
+                    >
+                      <CopyOutlined className="size-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
-      <ConfigProvider
-        theme={{
-          components: {
-            Button: {
-              colorPrimary: `linear-gradient(90deg,  ${colors2.join(', ')})`,
-              colorPrimaryHover: `linear-gradient(90deg, ${getHoverColors(colors2).join(', ')})`,
-              colorPrimaryActive: `linear-gradient(90deg, ${getActiveColors(colors2).join(', ')})`,
-              lineWidth: 0,
-            },
-          },
-        }}
-      >
-        <ToolTipWrapper title="copied" placement="top" trigger={"click"}>
-          <Button
-            type="primary"
-            onClick={() => copy(phoneDisplay)}
-          >
-            Copy
-          </Button>
-        </ToolTipWrapper>
-      </ConfigProvider>
-
-    </Flex>
+      {/* 空状态提示 */}
+      {phoneNumbers.length === 0 && (
+        <div className="card bg-base-100 shadow-lg">
+          <div className="card-body p-8 text-center">
+            <div className="text-base-content/60">
+              Click the generate button to create phone numbers
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
