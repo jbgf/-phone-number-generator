@@ -19,6 +19,9 @@ export const BODY_PADDING = "px-4 sm:px-6"
 export const metadata: Metadata = {
   title: generateTitle(),
   description: generateDescription(),
+  alternates: {
+    canonical: 'https://www.phonenumbergenerator.app', // 请替换为您的实际域名
+  },
   icons: [
     { rel: "icon", url: "/favicon.ico" }/* ,
     {rel: "icon", url: "/favicon-32x32.png" },

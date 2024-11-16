@@ -10,7 +10,7 @@ export const generateDescription = (country?: string) => {
   if (country) {
     return `Generate Phone numbers from ${country}, enhance software testing and data verification, setting up accounts, registrations and protecting your privacy`
   }
-  return `Protect your privacy with our random phone number generator, enhance software testing and data verification, setting up accounts, registrations and securing personal information`
+  return `Protect your privacy with our random phone number generator, enhance software testing and data verification, setting up accounts, securing personal information`
 }
 
 export const LoopEnum = (enumObject: any, callBack?: (key: string) => void) => {
