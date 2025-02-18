@@ -13,6 +13,8 @@ import { Button, Space } from "antd"
 import NoFollowLink from "../server-components/no-follow-link"
 import { ExportOutlined } from "@ant-design/icons"
 import { LoopEnum } from "@/util"
+import { TrustpilotWidget } from "../client-component/TrustpilotWidget"
+
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
   isHome?: boolean
@@ -101,6 +103,13 @@ export const PageContent = (props: PageContentProps) => {
                   </span>
                 )}
               </div>
+            </div>
+
+            <div className="divider my-2 md:my-4"></div>
+
+            <H2Header>What Our Users Say</H2Header>
+            <div className="w-full max-w-4xl mx-auto my-6">
+              <TrustpilotWidget className="bg-base-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" />
             </div>
 
             <div className="divider my-2 md:my-4"></div>
