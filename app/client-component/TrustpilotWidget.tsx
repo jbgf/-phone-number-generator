@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from 'react';
+import NoFollowLink from '../server-components/no-follow-link';
 
 interface TrustpilotWidgetProps {
     className?: string;
@@ -34,13 +35,13 @@ export const TrustpilotWidget: React.FC<TrustpilotWidgetProps> = ({ className })
                 data-style-height="52px"
                 data-style-width="100%"
             >
-                <a
+                <NoFollowLink
                     href="https://www.trustpilot.com/review/phonenumbergenerator.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    // target="_blank"
+                    // rel="noopener noreferrer"
                 >
-                    Trustpilot
-                </a>
+                    Go to Trustpilot
+                </NoFollowLink>
             </div>
         </div>
     );
