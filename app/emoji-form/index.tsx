@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Button, message } from "antd"
 import { TinyColor } from '@ctrl/tinycolor';
-import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
+import { FiCopy, FiPlay } from "react-icons/fi"
+import { useToast } from "../components/toast"
 import { Faker, allFakers } from '@faker-js/faker'
 import { CountryLabels, GenerateStyles, locales } from "../const"
 // import { experimental_useFormState as useFormState } from "react-dom"
@@ -18,6 +18,7 @@ let timer: NodeJS.Timeout;
 export function GeneratorForm({ country, style }: GeneratorFormProps) {
   const [phoneNumbers, setPhoneNumbers] = useState<string[]>([])
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
+  const toast = useToast()
   const config = useMemo(() => {
     // google search old link with lowercase, eg: hk
     const item = locales?.filter(item => item.label?.toLocaleLowerCase?.()?.indexOf(country?.toLocaleLowerCase?.()!) > -1)?.[0] || locales[0]
@@ -39,7 +40,7 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     timer = setTimeout(() => {
       const phone = currentLocale.phone?.number({ 'style': style || GenerateStyles.International })
       setPhoneNumbers(prev => [phone, ...prev].slice(0, 10))
-      message.success(`Generated ${phone}`)
+      toast.success(`Generated ${phone}`)
     }, 300)
   }
   const copy = (text: string) => {
@@ -80,13 +81,13 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     if (phoneNumbers.length === 0) return
     const allNumbers = phoneNumbers.join('\n')
     copy(allNumbers)
-    message.success('All numbers copied!')
+    toast.success('All numbers copied!')
   }
 
   const handleCopy = (phone: string, index: number) => {
     copy(phone)
     setCopiedIndex(index)
-    message.success('Number copied!')
+    toast.success('Number copied!')
     // 重置复制状态
     setTimeout(() => {
       setCopiedIndex(null)
@@ -125,23 +126,22 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
       <div className="card bg-base-100 shadow-lg">
         <div className="card-body p-4">
           <div className="flex items-center gap-4">
-            <Button
+            <button
               onClick={generatePhoneNumber}
-              type="primary"
-              size="large"
-              className="flex-1"
+              className="btn btn-primary flex-1 gap-2"
             >
+              <FiPlay className="size-5" />
               Generate Number
-              <ICON title={config?.localeName} className="size-5 ml-2 inline-block" />
-            </Button>
+              <ICON title={config?.localeName} className="size-5" />
+            </button>
 
-            {(
+            {phoneNumbers.length > 0 && (
               <button
                 onClick={copyAll}
-                className="btn btn-outline btn-secondary"
+                className="btn btn-outline btn-secondary gap-2"
                 title="Copy all numbers"
               >
-                <CopyOutlined className="size-5" />
+                <FiCopy className="size-5" />
                 Copy All
               </button>
             )}
@@ -194,7 +194,7 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
                     `}
                     title="Copy number"
                   >
-                    <CopyOutlined className={`
+                    <FiCopy className={`
                       size-4 transition-transform duration-200
                       ${copiedIndex === index ? 'scale-125' : ''}
                     `} />

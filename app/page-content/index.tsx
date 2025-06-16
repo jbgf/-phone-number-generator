@@ -8,7 +8,7 @@ import { H2Header } from "../server-components/h2-header"
 
 
 import NoFollowLink from "../server-components/no-follow-link"
-import { ExportOutlined } from "@ant-design/icons"
+import { FiExternalLink } from "react-icons/fi"
 import { LoopEnum } from "@/util"
 import { TrustpilotWidget } from "../client-component/TrustpilotWidget"
 import { WhatIsPhoneGenerator } from "../server-components/what-is-phone-generator"
@@ -253,7 +253,7 @@ export const PageContent = (props: PageContentProps) => {
                       <NoFollowLink href={egItem?.egLink?.link as string}
                         className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary hover:text-primary-focus rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
                         <span className="font-medium">{egItem?.egLink?.title}</span>
-                        <ExportOutlined className="group-hover:translate-x-1 transition-transform duration-300" />
+                        <FiExternalLink className="group-hover:translate-x-1 transition-transform duration-300" />
                       </NoFollowLink>
                     </div>
                   )}

@@ -18,21 +18,29 @@ font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe
 
 ### 图标系统
 **使用 React Icons**
-- ✅ 主要图标库：`react-icons`
+- ✅ 主要图标库：`react-icons` (Feather Icons - Fi 系列)
 - ✅ 国旗图标：`country-flag-icons`
-- ✅ Ant Design 图标：`@ant-design/icons`（仅用于 Ant Design 组件）
+- ❌ 不再使用 Ant Design 图标
 
 ```tsx
 // 推荐用法
-import { FiPhone, FiCopy, FiExternalLink } from 'react-icons/fi';
+import { FiPhone, FiCopy, FiExternalLink, FiPlay, FiCheck } from 'react-icons/fi';
 import { US, CN, GB } from 'country-flag-icons/react/3x2';
-import { ExportOutlined } from '@ant-design/icons';
 
 // 图标尺寸规范
 <FiPhone className="size-4" />      // 小图标 16px
 <FiPhone className="size-5" />      // 中图标 20px  
 <FiPhone className="size-6" />      // 大图标 24px
 <FiPhone className="size-8" />      // 特大图标 32px
+
+// 常用图标映射
+// 复制: FiCopy
+// 外部链接: FiExternalLink  
+// 播放/生成: FiPlay
+// 成功: FiCheck
+// 错误: FiX
+// 信息: FiInfo
+// 警告: FiAlertTriangle
 ```
 
 ## 🎯 样式规范

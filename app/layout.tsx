@@ -13,6 +13,7 @@ import { BrandTitles_Output } from './const';
 import DevTKD from './server-components/dev-tdk';
 import { generateDescription, generateTitle } from '@/util';
 import { BODY_PADDING } from './constants/styles';
+import { ToastProvider } from './components/toast';
 
 export const metadata: Metadata = {
   title: generateTitle(),
@@ -70,7 +71,9 @@ export default function RootLayout({
 
           </header>
           <main className={cn("min-h-screen flex items-stretch flex-col pb-28 max-w-5xl mx-auto", BODY_PADDING)}>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
           </main>
           {/* <Providers /> */}
       </body>
