@@ -47,7 +47,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* TrustBox script */}
-        <script
+        <Script
           type="text/javascript"
           src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
           async
@@ -73,7 +73,7 @@ export default function RootLayout({
 
           </header>
           <main className={cn("min-h-screen flex items-stretch flex-col pb-28 max-w-5xl mx-auto", BODY_PADDING)}>
-            <AntdRegistry>{children}</AntdRegistry>
+          {children}
           </main>
           {/* <Providers /> */}
       </body>
