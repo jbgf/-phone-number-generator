@@ -12,7 +12,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
 import DevTKD from './server-components/dev-tdk';
 import { generateDescription, generateTitle } from '@/util';
-export const BODY_PADDING = "px-4 sm:px-6"
+import { BODY_PADDING } from './constants/layout';
 
 export const metadata: Metadata = {
   title: generateTitle(),
