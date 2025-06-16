@@ -158,7 +158,6 @@ export const PageContent = (props: PageContentProps) => {
               ))}
             </div>
 
-            <UserGuide isHome={props.isHome} />
           </div>
         </div>
       </div>

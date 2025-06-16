@@ -112,23 +112,7 @@ export const HowToGuide = () => {
                 </div>
             </div>
 
-            {/* FAQ Section */}
-            <div>
-                <h3 className="text-xl font-semibold mb-6">Frequently Asked Questions</h3>
-                <div className="space-y-4">
-                    {faqs.map((faq, index) => (
-                        <div key={index} className="collapse collapse-plus bg-base-200">
-                            <input type="radio" name="faq-accordion" />
-                            <div className="collapse-title text-lg font-medium">
-                                {faq.question}
-                            </div>
-                            <div className="collapse-content">
-                                <p className="text-base-content/80">{faq.answer}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+
         </section>
     );
 }; 

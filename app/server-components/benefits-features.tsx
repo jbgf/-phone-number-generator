@@ -108,27 +108,7 @@ export const BenefitsFeatures = () => {
                 </div>
             </div>
 
-            {/* Benefits by User Type */}
-            <div className="mb-12">
-                <h3 className="text-xl font-semibold mb-6">Benefits by User Type</h3>
-                <div className="grid lg:grid-cols-3 gap-6">
-                    {benefits.map((benefit, index) => (
-                        <div key={index} className="card bg-gradient-to-br from-primary/5 to-secondary/5 border border-base-300">
-                            <div className="card-body p-6">
-                                <h4 className="card-title text-lg mb-4">{benefit.category}</h4>
-                                <ul className="space-y-2">
-                                    {benefit.items.map((item, itemIndex) => (
-                                        <li key={itemIndex} className="flex items-start gap-2 text-sm">
-                                            <span className="text-primary mt-1">•</span>
-                                            <span className="text-base-content/80">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+
 
             {/* Technical Specifications */}
             <div className="mb-8">
@@ -143,53 +123,7 @@ export const BenefitsFeatures = () => {
                 </div>
             </div>
 
-            {/* Comparison Table */}
-            <div className="mb-8">
-                <h3 className="text-xl font-semibold mb-6">Why Choose Our Phone Number Generator?</h3>
-                <div className="overflow-x-auto">
-                    <table className="table table-zebra w-full">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Our Generator</th>
-                                <th>Other Tools</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Country Support</td>
-                                <td className="text-success">100+ Countries</td>
-                                <td className="text-warning">Limited</td>
-                            </tr>
-                            <tr>
-                                <td>Generation Speed</td>
-                                <td className="text-success">Instant</td>
-                                <td className="text-warning">Slow</td>
-                            </tr>
-                            <tr>
-                                <td>Format Options</td>
-                                <td className="text-success">Multiple</td>
-                                <td className="text-warning">Basic</td>
-                            </tr>
-                            <tr>
-                                <td>Cost</td>
-                                <td className="text-success">Free</td>
-                                <td className="text-error">Paid</td>
-                            </tr>
-                            <tr>
-                                <td>Registration Required</td>
-                                <td className="text-success">No</td>
-                                <td className="text-error">Yes</td>
-                            </tr>
-                            <tr>
-                                <td>Mobile Friendly</td>
-                                <td className="text-success">Yes</td>
-                                <td className="text-warning">Limited</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
         </section>
     );
 }; 
