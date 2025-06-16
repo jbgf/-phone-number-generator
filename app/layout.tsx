@@ -45,6 +45,15 @@ export default function RootLayout({
   // console.log(process.env.NODE_ENV, `process.env.env`)
   return (
     <html lang="en">
+      <head>
+        {/* TrustBox script */}
+        <script
+          type="text/javascript"
+          src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+          async
+        />
+        {/* End TrustBox script */}
+      </head>
         <body className={cn(inter.className, "antialiased bg-gray-100")}>
           <header
             className={cn(

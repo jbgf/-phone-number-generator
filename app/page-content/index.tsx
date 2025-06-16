@@ -14,6 +14,10 @@ import NoFollowLink from "../server-components/no-follow-link"
 import { ExportOutlined } from "@ant-design/icons"
 import { LoopEnum } from "@/util"
 import { TrustpilotWidget } from "../client-component/TrustpilotWidget"
+import { WhatIsPhoneGenerator } from "../server-components/what-is-phone-generator"
+import { UseCases } from "../server-components/use-cases"
+import { HowToGuide } from "../server-components/how-to-guide"
+import { BenefitsFeatures } from "../server-components/benefits-features"
 
 interface PageContentProps extends React.PropsWithChildren {
   country: CountryLabels
@@ -104,6 +108,22 @@ export const PageContent = (props: PageContentProps) => {
                 )}
               </div>
             </div>
+
+            <div className="divider my-2 md:my-4"></div>
+
+            <WhatIsPhoneGenerator />
+
+            <div className="divider my-2 md:my-4"></div>
+
+            <BenefitsFeatures />
+
+            <div className="divider my-2 md:my-4"></div>
+
+            <UseCases />
+
+            <div className="divider my-2 md:my-4"></div>
+
+            <HowToGuide />
 
             <div className="divider my-2 md:my-4"></div>
 

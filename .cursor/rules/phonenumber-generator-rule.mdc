@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Design overview
+[DESIGN.md](mdc:docs/DESIGN.md)
+
+# Project structure
+[project-structure.md](mdc:docs/project-structure.md)
