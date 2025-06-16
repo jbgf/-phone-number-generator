@@ -6,6 +6,16 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  /* Custom CSS variables for enhanced styling */
+    --card-hover-scale: 1.05;
+    --animation-duration-fast: 200ms;
+    --animation-duration-normal: 300ms;
+    --animation-duration-slow: 500ms;
+    --border-radius-card: 1rem;
+    --border-radius-large: 1.5rem;
+    --shadow-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-elevation-2: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-elevation-3: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,8 +41,121 @@ body {
   color: white;
 
 }
+
+/* Custom animations for enhanced user experience */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(var(--primary), 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(var(--primary), 0.6);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Utility classes for enhanced styling */
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: all var(--animation-duration-normal) ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(var(--card-hover-scale));
+  box-shadow: var(--shadow-elevation-3);
+}
+
+/* Smooth focus states */
+.focus-ring {
+  transition: all var(--animation-duration-fast) ease-out;
+}
+
+.focus-ring:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+        /* Custom gradient text */
+        .gradient-text {
+          background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+    
+        /* Enhanced card styles */
+        .card-enhanced {
+          border-radius: var(--border-radius-card);
+          box-shadow: var(--shadow-elevation-1);
+          transition: all var(--animation-duration-normal) ease-out;
+        }
+    
+        .card-enhanced:hover {
+          box-shadow: var(--shadow-elevation-2);
+          transform: translateY(-2px);
+        }
 }

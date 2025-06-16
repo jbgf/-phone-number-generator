@@ -57,57 +57,233 @@ export const PageContent = (props: PageContentProps) => {
           <div className="card-body p-4 md:p-8">
             <H2Header>Other countries and regions</H2Header>
             <h3 className="sr-only">Available Countries for Phone Number Generation</h3>
-            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-6 place-items-start pb-6 md:pb-8">
-              {locales?.filter(item => item.label !== country).map(item => {
-                return (
-                  <Link key={item.label}
-                    className="btn btn-ghost btn-sm normal-case w-full sm:w-auto justify-start"
-                    href={`/${item.label}?style=${style}`}
-                    title={`${item.localeName} phone number generator`}>
-                    <Space className="text-base-content">
-                      {item?.icon && <item.icon className="size-4" />}
-                      <span className="hover:text-primary truncate">{item.localeName}</span>
-                    </Space>
-                  </Link>
-                )
-              })}
+
+            {/* Enhanced Countries Section with Beautiful Grid Layout */}
+            <section className="pb-8 md:pb-12">
+              <div className="mb-6">
+                <p className="text-base-content/70 text-center max-w-2xl mx-auto">
+                  Generate authentic phone numbers for any country worldwide. Each region follows local formatting standards and conventions.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 md:gap-4">
+                {locales?.filter(item => item.label !== country).map((item, index) => {
+                  return (
+                    <Link key={item.label}
+                      className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-base-200 to-base-300 hover:from-primary/10 hover:to-primary/20 border border-base-300 hover:border-primary/30 transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg hover:-translate-y-1"
+                      href={`/${item.label}?style=${style}`}
+                      title={`${item.localeName} phone number generator`}
+                      style={{
+                        animationDelay: `${index * 50}ms`
+                      }}>
+
+                      {/* Animated background gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+
+                      <div className="relative p-4 flex flex-col items-center text-center space-y-2">
+                        {/* Flag Icon with Animation */}
+                        <div className="relative">
+                          {item?.icon && (
+                            <item.icon className="size-8 md:size-10 rounded-md shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-110" />
+                          )}
+                          <div className="absolute inset-0 rounded-md bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+
+                        {/* Country Name */}
+                        <span className="font-medium text-sm md:text-base text-base-content group-hover:text-primary transition-colors duration-300 leading-tight">
+                          {item.localeName}
+                        </span>
+
+                        {/* Subtle indicator */}
+                        <div className="w-0 group-hover:w-8 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"></div>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+
+              {/* Additional Info */}
+              <div className="mt-8 text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-success/10 text-success rounded-full text-sm font-medium">
+                  <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                  {locales.length}+ Countries Supported
+                </div>
+              </div>
             </section>
 
-            <div className="divider my-2 md:my-4"></div>
+            <div className="divider my-8 md:my-12">
+              <div className="text-base-content/40">•••</div>
+            </div>
 
             <H2Header>Other styles of generating phone numbers</H2Header>
             <h3 className="sr-only">Phone Number Generation Formats</h3>
-            <div className="flex flex-wrap gap-2 pb-6 md:pb-8">
-              {LoopEnum(GenerateStyles)?.map?.(item =>
-                item?.value === style ? (
-                  <span key={item.key} className="badge badge-primary text-xs md:text-sm">{item.value}</span>
-                ) : (
-                    <Link href={`?style=${item.value}`} key={item.key}
-                      className="badge badge-outline hover:badge-primary text-xs md:text-sm">
-                    {item.value}
-                  </Link>
-                  )
-              )}
-            </div>
 
-            <div className="divider my-2 md:my-4"></div>
+            {/* Enhanced Styles Section with Modern Cards */}
+            <section className="pb-8 md:pb-12">
+              <div className="mb-6">
+                <p className="text-base-content/70 text-center max-w-2xl mx-auto">
+                  Choose from different phone number formats to match your specific testing or development needs.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-4">
+                {LoopEnum(GenerateStyles)?.map?.((item, index) => {
+                  const isActive = item?.value === style;
+                  const styleInfo = StyleMaps.get(item.value as GenerateStyles);
+
+                  return isActive ? (
+                    <div key={item.key}
+                      className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-focus text-primary-content shadow-lg border-2 border-primary/20"
+                      style={{
+                        animationDelay: `${index * 100}ms`
+                      }}>
+
+                      {/* Active indicator animation */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-pulse"></div>
+
+                      <div className="relative px-6 py-4 flex flex-col items-center text-center space-y-2">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                          <span className="font-bold text-lg capitalize">{item.value}</span>
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                        </div>
+
+                        <div className="text-xs opacity-90 font-medium">ACTIVE FORMAT</div>
+
+                        {styleInfo?.eg && (
+                          <code className="text-xs bg-white/20 px-2 py-1 rounded font-mono">
+                            {styleInfo.eg.split(' ')[0]}
+                          </code>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link href={`?style=${item.value}`} key={item.key}
+                        className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-base-200 to-base-300 hover:from-base-300 hover:to-base-200 border border-base-300 hover:border-primary/40 transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg hover:-translate-y-1"
+                        style={{
+                          animationDelay: `${index * 100}ms`
+                        }}>
+
+                        {/* Hover animation */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-out"></div>
+
+                        <div className="relative px-6 py-4 flex flex-col items-center text-center space-y-2">
+                          <span className="font-semibold text-base capitalize text-base-content group-hover:text-primary transition-colors duration-300">
+                            {item.value}
+                          </span>
+
+                          {styleInfo?.eg && (
+                            <code className="text-xs bg-base-100 px-2 py-1 rounded font-mono text-base-content/70 group-hover:text-primary/70 transition-colors duration-300">
+                              {styleInfo.eg.split(' ')[0]}
+                            </code>
+                          )}
+
+                          <div className="w-0 group-hover:w-6 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out"></div>
+                        </div>
+                      </Link>
+                  );
+                })}
+              </div>
+
+              {/* Format comparison table */}
+              <div className="mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-base-200/50 to-base-300/50 border border-base-300">
+                <div className="p-6">
+                  <h4 className="font-semibold text-lg mb-4 text-center">Format Comparison</h4>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {LoopEnum(GenerateStyles)?.map?.((item) => {
+                      const styleInfo = StyleMaps.get(item.value as GenerateStyles);
+                      return (
+                        <div key={item.key} className="text-center p-4 rounded-xl bg-base-100/50 border border-base-300/50">
+                          <div className="font-medium capitalize mb-2">{item.value}</div>
+                          <code className="text-sm bg-base-200 px-2 py-1 rounded block">
+                            {styleInfo?.eg || 'N/A'}
+                          </code>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div className="divider my-8 md:my-12">
+              <div className="text-base-content/40">•••</div>
+            </div>
 
             <H2Header>What is the format of the generated phone number</H2Header>
             <h3 className="sr-only">Phone Number Format Examples</h3>
-            <div className="alert alert-info mb-6 md:mb-8 flex-col sm:flex-row items-start sm:items-center p-4">
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full">
-                <span className="whitespace-nowrap">Format example:</span>
-                <code className="px-2 py-1 bg-base-200 rounded break-all">{egItem?.eg}</code>
-                {(!!egItem?.egLink?.link && !!egItem?.egLink?.title) && (
-                  <span className="mt-2 sm:mt-0">
-                    <NoFollowLink href={egItem?.egLink?.link as string}
-                      className="link link-primary inline-flex items-center gap-1">
-                      {egItem?.egLink?.title} <ExportOutlined />
-                    </NoFollowLink>
-                  </span>
-                )}
+
+            {/* Enhanced Format Section with Interactive Card */}
+            <section className="pb-8 md:pb-12">
+              <div className="mb-6">
+                <p className="text-base-content/70 text-center max-w-2xl mx-auto">
+                  Understanding the format helps you integrate generated numbers seamlessly into your applications and testing workflows.
+                </p>
               </div>
-            </div>
+
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-info/10 via-info/5 to-primary/10 border border-info/20 shadow-xl">
+                {/* Animated background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-info/20 to-transparent animate-pulse"></div>
+                </div>
+
+                <div className="relative p-8 md:p-12">
+                  {/* Header with icon */}
+                  <div className="flex items-center justify-center mb-8">
+                    <div className="flex items-center gap-4 px-6 py-3 bg-info/10 rounded-full border border-info/20">
+                      <div className="w-3 h-3 bg-info rounded-full animate-pulse"></div>
+                      <span className="font-semibold text-info">Current Format: {style}</span>
+                      <div className="w-3 h-3 bg-info rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+
+                  {/* Main format display */}
+                  <div className="text-center mb-8">
+                    <div className="inline-block">
+                      <div className="text-sm font-medium text-base-content/60 mb-2">Format Example</div>
+                      <div className="relative group">
+                        <code className="text-2xl md:text-3xl font-mono font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent p-4 block">
+                          {egItem?.eg}
+                        </code>
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-info/10 rounded-lg -z-10 group-hover:from-primary/20 group-hover:to-info/20 transition-all duration-300"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Additional information */}
+                  {(!!egItem?.egLink?.link && !!egItem?.egLink?.title) && (
+                    <div className="text-center mb-6">
+                      <NoFollowLink href={egItem?.egLink?.link as string}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary hover:text-primary-focus rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                        <span className="font-medium">{egItem?.egLink?.title}</span>
+                        <ExportOutlined className="group-hover:translate-x-1 transition-transform duration-300" />
+                      </NoFollowLink>
+                    </div>
+                  )}
+
+                  {/* Format breakdown */}
+                  <div className="grid md:grid-cols-3 gap-4 mt-8">
+                    <div className="text-center p-4 rounded-2xl bg-base-100/50 border border-base-300/50 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+                      <div className="text-2xl mb-2">🌍</div>
+                      <div className="font-medium mb-1">International</div>
+                      <div className="text-sm text-base-content/70">Includes country codes</div>
+                    </div>
+
+                    <div className="text-center p-4 rounded-2xl bg-base-100/50 border border-base-300/50 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+                      <div className="text-2xl mb-2">📱</div>
+                      <div className="font-medium mb-1">Authentic</div>
+                      <div className="text-sm text-base-content/70">Follows real patterns</div>
+                    </div>
+
+                    <div className="text-center p-4 rounded-2xl bg-base-100/50 border border-base-300/50 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+                      <div className="text-2xl mb-2">🔧</div>
+                      <div className="font-medium mb-1">Ready to Use</div>
+                      <div className="text-sm text-base-content/70">Perfect for testing</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <div className="divider my-2 md:my-4"></div>
 
