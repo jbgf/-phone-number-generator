@@ -40,6 +40,7 @@ This document outlines the project structure for the Phone Number Generator appl
 │   └── sitemap.ts             # SEO sitemap generation
 ├── docs/                      # Documentation
 │   ├── DESIGN.md             # Design documentation
+│   ├── frontend-guidelines.md # Frontend development standards
 │   └── project-structure.md  # This file
 ├── util/                     # Utility functions
 └── package.json              # Dependencies and scripts

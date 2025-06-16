@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script'
 
@@ -13,7 +12,6 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
 import DevTKD from './server-components/dev-tdk';
 import { generateDescription, generateTitle } from '@/util';
-const inter = Inter({ subsets: ["latin"] });
 export const BODY_PADDING = "px-4 sm:px-6"
 
 export const metadata: Metadata = {
@@ -53,7 +51,7 @@ export default function RootLayout({
         />
         {/* End TrustBox script */}
       </head>
-        <body className={cn(inter.className, "antialiased bg-gray-100")}>
+      <body className={cn("antialiased bg-gray-100")}>
           <header
             className={cn(
               "h-80 bg-transparent top-0 left-0 z-20 w-full py-3 flex flex-row flex-nowrap justify-between mx-autox items-stretch animate-in fade-in slide-in-from-top-4 duration-1000 ease-in-out",
