@@ -9,7 +9,6 @@ import Benifit from './images/content/protect-phone-privacy.jpg'
 import cn from 'classnames'
 import Link from "next/link";
 import Image from "next/image";
-import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { BrandTitles_Output } from './const';
 import DevTKD from './server-components/dev-tdk';
@@ -67,7 +66,7 @@ export default function RootLayout({
               href="/"
             >
 
-              <h1 className="italic">Random Phone Number Generator</h1>
+            <h1 className="italic">Phone Number Generator</h1>
             </Link>
 
 

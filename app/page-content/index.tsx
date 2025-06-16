@@ -9,7 +9,6 @@ import { H2Header } from "../server-components/h2-header"
 import cn from 'classnames'
 import { BODY_PADDING } from "../layout"
 
-import { Button, Space } from "antd"
 import NoFollowLink from "../server-components/no-follow-link"
 import { ExportOutlined } from "@ant-design/icons"
 import { LoopEnum } from "@/util"
@@ -42,7 +41,7 @@ export const PageContent = (props: PageContentProps) => {
             </h2>
 
             <h3 className="text-base md:text-xl text-base-content/70 mb-8 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-              {countryName} Random phone number generator for Testing Purposes
+              {countryName} phone number generator for Testing Purposes
             </h3>
 
             <div className="w-full md:max-w-md mx-auto space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">

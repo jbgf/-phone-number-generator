@@ -1,14 +1,11 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { createEmoji } from "./action"
-import { SubmitButton } from "./submit-button"
-import { Button, ConfigProvider, Flex, Input, Select, Space, message } from "antd"
+import { Button, message } from "antd"
 import { TinyColor } from '@ctrl/tinycolor';
 import { CopyOutlined, EnterOutlined } from "@ant-design/icons"
 import { Faker, allFakers } from '@faker-js/faker'
 import { CountryLabels, GenerateStyles, locales } from "../const"
-import { ToolTipWrapper } from "../client-component/tooltip-wrapper"
 // import { experimental_useFormState as useFormState } from "react-dom"
 // import toast from "react-hot-toast"
 // import useSWR from "swr"
