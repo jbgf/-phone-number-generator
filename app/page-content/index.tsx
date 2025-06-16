@@ -31,19 +31,80 @@ export const PageContent = (props: PageContentProps) => {
   const egItem = StyleMaps?.get(style);
   return (
     <div className="relative">
-      <div className="hero bg-base-200 px-4 md:px-8">
-        <div className="hero-content text-center p-0 md:p-6">
-          <div className="max-w-4xl w-full">
-            <h2 className="font-bold text-2xl md:text-3xl lg:text-5xl text-primary mb-4 mt-4 animate-in fade-in slide-in-from-bottom-3 duration-1000 ease-in-out">
-              Generate Phone Number{` for ${countryName}`} with Just a Click!
-            </h2>
+      {/* Enhanced Hero Section with Modern Design */}
+      <div className="bg-gradient-to-br from-base-200 to-base-100">
+        <div className="hero min-h-[80vh] px-4 md:px-8">
+          <div className="hero-content text-center p-0 md:p-6 w-full">
+            <div className="max-w-5xl w-full">
 
-            <h3 className="text-base md:text-xl text-base-content/70 mb-8 md:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-              {countryName} phone number generator for Testing Purposes
-            </h3>
+              {/* Country Badge */}
+              {countryName && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  {countryName} Generator
+                </div>
+              )}
 
-            <div className="w-full md:max-w-md mx-auto space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1200 ease-in-out">
-              <GeneratorForm country={countryLabel} style={style} />
+              {/* Main Heading with Enhanced Typography */}
+              <h1 className="relative mb-8">
+                <div className="font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-center">
+                  <div className="text-primary mb-4">
+                    Generate Phone Number
+                  </div>
+                  {countryName && (
+                    <div className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl text-base-content font-bold mb-2">
+                      for {countryName}
+                    </div>
+                  )}
+                  <div className="text-xl md:text-3xl lg:text-4xl xl:text-5xl text-base-content/70 font-semibold">
+                    with Just a Click!
+                  </div>
+                </div>
+
+                {/* Decorative underline */}
+                <div className="flex justify-center mt-6">
+                  <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+                </div>
+              </h1>
+
+              {/* Enhanced Subtitle */}
+              <div className="max-w-3xl mx-auto mb-12 text-center">
+                <p className="text-lg md:text-2xl text-base-content font-medium leading-relaxed">
+                  Professional phone number generator for
+                  <span className="text-primary font-semibold"> Testing & Development</span>
+                </p>
+                <p className="text-base md:text-lg text-base-content/80 mt-2">
+                  Generate authentic, formatted phone numbers instantly for your projects
+                </p>
+              </div>
+
+              {/* Enhanced Generator Form Container */}
+              <div className="relative max-w-2xl mx-auto">
+                {/* Form container */}
+                <div className="bg-base-100 border border-base-300 rounded-3xl p-6 md:p-8 shadow-xl">
+                  <GeneratorForm country={countryLabel} style={style} />
+                </div>
+              </div>
+
+              {/* Feature Pills */}
+              <div className="flex flex-wrap justify-center gap-3 mt-12">
+                {[
+                  { icon: '⚡', text: 'Instant Generation' },
+                  { icon: '🌍', text: '100+ Countries' },
+                  { icon: '🔒', text: 'Privacy Safe' },
+                  { icon: '📱', text: 'Mobile Friendly' }
+                ].map((feature, index) => (
+                  <div
+                    key={feature.text}
+                    className="flex items-center gap-2 px-4 py-2 bg-base-200 border border-base-300 rounded-full text-sm font-medium text-base-content hover:bg-primary hover:text-primary-content transition-all duration-300 hover:scale-105"
+                  >
+                    <span className="text-lg">{feature.icon}</span>
+                    <span>{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+
+
             </div>
           </div>
         </div>

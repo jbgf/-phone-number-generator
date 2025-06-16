@@ -8,3 +8,6 @@ alwaysApply: false
 
 # Project structure
 [project-structure.md](mdc:docs/project-structure.md)
+
+# Style design and css
+[frontend-guidelines.md](mdc:docs/frontend-guidelines.md)

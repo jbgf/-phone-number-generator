@@ -91,6 +91,29 @@ body {
   }
 }
 
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
 /* Utility classes for enhanced styling */
 .animate-shimmer {
   animation: shimmer 2s infinite;
@@ -108,7 +131,6 @@ body {
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
 }
-
 /* Enhanced hover effects */
 .hover-lift {
   transition: all var(--animation-duration-normal) ease-out;
@@ -129,23 +151,12 @@ body {
   outline-offset: 2px;
 }
 
-/* Glass morphism effect */
-.glass-effect {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-        /* Custom gradient text */
-        .gradient-text {
-          background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+
     
         /* Enhanced card styles */
         .card-enhanced {
@@ -158,4 +169,5 @@ body {
           box-shadow: var(--shadow-elevation-2);
           transform: translateY(-2px);
         }
+
 }
