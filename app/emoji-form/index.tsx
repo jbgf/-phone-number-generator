@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { TinyColor } from '@ctrl/tinycolor';
 import { FiCopy, FiPlay } from "react-icons/fi"
 import { useToast } from "../components/toast"
 import { Faker, allFakers } from '@faker-js/faker'
@@ -115,11 +114,6 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     }
   ) */
   const ICON = config?.icon;
-  const getHoverColors = (colors: string[]) =>
-    colors.map((color) => new TinyColor(color).lighten(5).toString());
-  const getActiveColors = (colors: string[]) =>
-    colors.map((color) => new TinyColor(color).darken(5).toString());
-  const colors2 = ['#6253E1', '#04BEFE']//['#fc6076', '#ff9a44', '#ef9d43', '#e75516'];
   return (
     <div className="w-full space-y-6">
       {/* 生成按钮区域 */}
