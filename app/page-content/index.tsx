@@ -37,17 +37,11 @@ export const PageContent = (props: PageContentProps) => {
           <div className="hero-content text-center p-0 md:p-6 w-full">
             <div className="max-w-5xl w-full">
 
-              {/* Country Badge */}
-              {countryName && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span>
-                  {countryName} Generator
-                </div>
-              )}
+
 
               {/* Main Heading with Enhanced Typography */}
               <h1 className="relative mb-8">
-                <div className="font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight text-center">
+                <div className="font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-center">
                   <div className="text-primary mb-4">
                     Generate Phone Number
                   </div>
@@ -56,9 +50,7 @@ export const PageContent = (props: PageContentProps) => {
                       for {countryName}
                     </div>
                   )}
-                  <div className="text-xl md:text-3xl lg:text-4xl xl:text-5xl text-base-content/70 font-semibold">
-                    with Just a Click!
-                  </div>
+
                 </div>
 
                 {/* Decorative underline */}
