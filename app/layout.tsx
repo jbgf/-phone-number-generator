@@ -2,7 +2,8 @@ import React from 'react';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Inspector } from 'react-dev-inspector'
+import Script from 'next/script'
+
 import Benifit from './images/content/protect-phone-privacy.jpg'
 
 import cn from 'classnames'
@@ -37,12 +38,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isDev = process.env.NODE_ENV === "development"
-  const Wrapper = isDev ? Inspector : React.Fragment;
+  // 检查当前是否为开发环境
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const shouldLoadAnalytics = !isDevelopment;
+
   // console.log(process.env.NODE_ENV, `process.env.env`)
   return (
     <html lang="en">
-      <Wrapper>
         <body className={cn(inter.className, "antialiased bg-gray-100")}>
           <header
             className={cn(
@@ -65,9 +67,18 @@ export default function RootLayout({
             <AntdRegistry>{children}</AntdRegistry>
           </main>
           {/* <Providers /> */}
-        </body>
-      </Wrapper>
-      <GoogleAnalytics gaId="G-FL3XTQJHV4" />
+      </body>
+      {shouldLoadAnalytics && <>
+        <Script type="text/javascript">
+          {`(function(c,l,a,r,i,t,y){
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "s07jp0whpq");
+          `}
+        </Script>
+        <GoogleAnalytics gaId="G-FL3XTQJHV4" />
+      </>}
       {/* <DevTKD /> */}
     </html>
   );
