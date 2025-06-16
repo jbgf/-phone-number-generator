@@ -6,8 +6,6 @@ import { UserGuide } from "../user-guide"
 import Image from "next/image"
 import { H2Header } from "../server-components/h2-header"
 
-import cn from 'classnames'
-import { BODY_PADDING } from "../constants/layout"
 
 import NoFollowLink from "../server-components/no-follow-link"
 import { ExportOutlined } from "@ant-design/icons"

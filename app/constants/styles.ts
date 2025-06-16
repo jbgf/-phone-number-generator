@@ -1,5 +1,5 @@
 /**
- * Layout constants for consistent spacing and styling
+ * Style constants for consistent spacing and styling across the application
  */
 
 /** 

@@ -42,23 +42,26 @@ import { ExportOutlined } from '@ant-design/icons';
 app/
 ├── globals.css          # 全局样式和 CSS 变量
 ├── constants/           # 样式和布局常量
-│   └── layout.ts       # 布局相关常量
+│   └── styles.ts       # 样式相关常量
 ├── components/          # 组件特定样式
 └── [page]/             # 页面特定样式
 ```
 
 ### 常量管理
-**布局常量**
+**样式常量**
 ```tsx
-// app/constants/layout.ts
+// app/constants/styles.ts
 export const BODY_PADDING = "px-4 sm:px-6";
 
 // 使用方式
-import { BODY_PADDING } from '../constants/layout';
+import { BODY_PADDING } from '../constants/styles';
 <div className={cn("container", BODY_PADDING)}>
 ```
 
-**注意**: Next.js layout.tsx 文件只能导出特定的字段（metadata, default function），其他常量应放在独立的常量文件中。
+**注意**: 
+- Next.js layout.tsx 文件只能导出特定的字段（metadata, default function）
+- 避免使用 Next.js 保留文件名（如 layout, page, loading 等）作为常量文件名
+- 其他常量应放在独立的常量文件中，使用描述性名称
 
 ### CSS 变量使用
 ```css
