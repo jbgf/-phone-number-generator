@@ -9,7 +9,8 @@ This document outlines the project structure for the Phone Number Generator appl
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS + DaisyUI
-- **UI Components**: Ant Design
+- **Icons**: React Icons (Feather Icons)
+- **UI Components**: Custom components + DaisyUI
 - **Deployment**: Vercel
 
 ## Directory Structure

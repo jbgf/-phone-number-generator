@@ -132,10 +132,47 @@ import { BODY_PADDING } from '../constants/styles';
 ### 组件分类
 ```
 app/
+├── components/          # 通用 UI 组件
+│   └── toast.tsx       # 自定义 Toast 通知系统
 ├── server-components/   # 服务端组件（SEO 优化）
 ├── client-component/    # 客户端组件（交互功能）
 └── page-content/       # 页面内容组件
 ```
+
+### 自定义组件库
+
+#### Toast 通知系统
+替代 Ant Design 的 message 组件，提供现代化的通知体验：
+
+```tsx
+// 在 layout.tsx 中包装应用
+import { ToastProvider } from './components/toast';
+
+<ToastProvider>
+  {children}
+</ToastProvider>
+
+// 在组件中使用
+import { useToast } from '../components/toast';
+
+const MyComponent = () => {
+  const toast = useToast();
+  
+  const handleAction = () => {
+    toast.success('操作成功！');
+    toast.error('操作失败！');
+    toast.info('提示信息');
+    toast.warning('警告信息');
+  };
+};
+```
+
+**特性**：
+- 🎨 使用 DaisyUI 主题色彩
+- 🚀 平滑动画效果
+- 📱 移动端友好
+- ⚡ 轻量级实现
+- 🎯 TypeScript 支持
 
 ### 组件命名规范
 - **文件名**：小写加连字符 `component-name.tsx`
@@ -190,11 +227,24 @@ export const ComponentName = ({ prop1, prop2 }: ComponentProps) => {
 
 ### 交互反馈
 ```tsx
-// 加载状态
-<Button loading={isLoading}>Generate</Button>
+// 自定义 Toast 通知系统
+import { useToast } from '../components/toast';
 
-// 成功反馈
-message.success('Generated successfully!');
+const Component = () => {
+  const toast = useToast();
+  
+  const handleSuccess = () => {
+    toast.success('Generated successfully!');
+    toast.error('Something went wrong!');
+    toast.info('Information message');
+    toast.warning('Warning message');
+  };
+};
+
+// 按钮状态
+<button className="btn btn-primary" disabled={isLoading}>
+  {isLoading ? 'Loading...' : 'Generate'}
+</button>
 
 // 悬停效果
 <div className="group">
@@ -300,8 +350,8 @@ import { debounce } from 'lodash-es';  // ✅
 import _ from 'lodash';                // ❌
 
 // Tree shaking 友好的导入
-import { Button } from 'antd';         // ✅
-import * as antd from 'antd';          // ❌
+import { FiCopy } from 'react-icons/fi';  // ✅
+import * as ReactIcons from 'react-icons'; // ❌
 ```
 
 ### 渲染优化

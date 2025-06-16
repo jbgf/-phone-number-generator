@@ -239,7 +239,7 @@ export const PageContent = (props: PageContentProps) => {
                     <div className="inline-block">
                       <div className="text-sm font-medium text-base-content/60 mb-2">Format Example</div>
                       <div className="relative group">
-                        <code className="text-2xl md:text-3xl font-mono font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent p-4 block">
+                        <code className="text-2xl md:text-3xl font-mono font-bold bg-gradient-to-r from-primary to-info bg-clip-text p-4 block">
                           {egItem?.eg}
                         </code>
                         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-info/10 rounded-lg -z-10 group-hover:from-primary/20 group-hover:to-info/20 transition-all duration-300"></div>
