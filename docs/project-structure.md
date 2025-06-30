@@ -19,6 +19,9 @@ This document outlines the project structure for the Phone Number Generator appl
 /
 ├── app/                          # Next.js App Router directory
 │   ├── [country]/               # Dynamic country routes
+│   ├── components/              # Shared UI components
+│   │   ├── header.tsx          # Site header with logo and navigation
+│   │   └── toast.tsx           # Toast notification component
 │   ├── client-component/        # Client-side React components
 │   │   └── TrustpilotWidget.tsx # Trustpilot integration component
 │   ├── server-components/       # Server-side React components
@@ -31,6 +34,10 @@ This document outlines the project structure for the Phone Number Generator appl
 │   ├── page-content/           # Main page content components
 │   │   └── index.tsx          # Primary page content layout
 │   ├── emoji-form/            # Phone number generation form
+│   │   ├── index.tsx          # Main form component with phone icon
+│   │   ├── action.ts          # Form actions
+│   │   ├── submit-button.tsx  # Form submission button
+│   │   └── styles.module.css  # Form-specific styles
 │   ├── emoji-count/           # Number counting components
 │   ├── user-guide/            # User guidance components
 │   ├── images/                # Static image assets
@@ -77,6 +84,20 @@ Located in `app/server-components/`, these components are rendered on the server
 - **`h2-header.tsx`**: Consistent H2 styling for SEO structure
 - **`no-follow-link.tsx`**: SEO-optimized external links
 
+### Shared UI Components
+Located in `app/components/`:
+
+- **`header.tsx`**: Site header component
+  - Purpose: Global navigation and branding
+  - Features: Logo display using apple-touch-icon.png (32x32)
+  - Implementation: Next.js Image optimization, responsive design
+  - SEO benefit: Consistent branding and navigation structure
+
+- **`toast.tsx`**: Toast notification system
+  - Purpose: User feedback for interactions
+  - Features: Success/error notifications for form actions
+  - Implementation: Custom toast context and provider
+
 ### Client Components
 Located in `app/client-component/`:
 
@@ -84,6 +105,20 @@ Located in `app/client-component/`:
   - Purpose: Social proof and trust building
   - Implementation: Clean component without script loading (moved to layout)
   - SEO benefit: User reviews and credibility
+
+### Form Components
+Located in `app/emoji-form/`:
+
+- **`index.tsx`**: Main phone number generation form
+  - Purpose: Interactive phone number generation interface
+  - Features: Phone icon (FiPhone), responsive button text (Generate/Generate Number)
+  - Implementation: Faker.js integration, manual generation (auto-generation removed)
+  - UI/UX: Mobile-optimized button text to prevent wrapping
+  - User feedback: Toast notifications for generation and copy actions
+
+- **`submit-button.tsx`**: Form submission button component
+- **`action.ts`**: Server actions for form handling
+- **`styles.module.css`**: Component-specific styling
 
 ### Page Structure
 The main page content is organized in `app/page-content/index.tsx` with the following flow:
