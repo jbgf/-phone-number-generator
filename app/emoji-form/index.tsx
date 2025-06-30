@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { FiCopy, FiPlay } from "react-icons/fi"
+import { FiCopy, FiPhone } from "react-icons/fi"
 import { useToast } from "../components/toast"
 import { Faker, allFakers } from '@faker-js/faker'
 import { CountryLabels, GenerateStyles, locales } from "../const"
@@ -29,9 +29,9 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
     const FakerFN = allFakers[config.locale]
     return FakerFN
   }, [config])
-  useEffect(() => {
-    if (country) generatePhoneNumber()
-  }, [country])
+  // useEffect(() => {
+  //   if (country) generatePhoneNumber()
+  // }, [country])
   const generatePhoneNumber = () => {
     if (timer) {
       clearTimeout(timer)
@@ -124,8 +124,9 @@ export function GeneratorForm({ country, style }: GeneratorFormProps) {
               onClick={generatePhoneNumber}
               className="btn btn-primary flex-1 gap-2"
             >
-              <FiPlay className="size-5" />
-              Generate Number
+              <FiPhone className="size-5" />
+              <span className="hidden sm:inline">Generate Number</span>
+              <span className="sm:hidden">Generate</span>
               <ICON title={config?.localeName} className="size-5" />
             </button>
 
